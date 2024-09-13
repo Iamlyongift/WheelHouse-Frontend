@@ -31,14 +31,6 @@ const Home = () => {
         title="New Arrivals" 
         subtitle="Shop Now" />
      </div>
-     {/* <div className="home">
-     <ImageCard   imageSrc={bestSellerImage} 
-        title="Best Sellers" 
-        subtitle="Shop Now" />
-      <ImageCard   imageSrc={newArrivalImage} 
-        title="New Arrivals" 
-        subtitle="Shop Now" />
-     </div> */}
      <FeaturedHomes/>
      <Testimonials className="reviews-sections"/>
      <AppPromotion/>

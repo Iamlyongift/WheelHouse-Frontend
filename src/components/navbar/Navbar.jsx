@@ -43,12 +43,25 @@ const Navbar = ({ theme, setTheme }) => {
         <Link to="/about" onClick={toggleMenu}>
           <li>About</li>
         </Link>
+        <div>
+
+        </div>
+        <div className="input-side">
         <div id="phone-search">
         <input type="text" placeholder="search" />
         <img
           src={theme === "light" ? search_icon_light : search_icon_dark}
           alt="search"
         />
+        </div>
+        <div id="icons">
+        <Link to="/register">
+          <IoMdContact size={40}  className="log"/>
+        </Link>
+        <Link to="/cart">
+          <GiShoppingCart size={40}  className="cat"/>
+        </Link>
+      </div>
       </div>
       </ul>
 

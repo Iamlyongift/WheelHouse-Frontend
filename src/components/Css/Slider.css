@@ -3,9 +3,12 @@
 .slider-wrapper {
   text-align: center; /* Center the header text */
   padding: 20px 0; /* Space around the slider section */
-  background-color: #f8f8f8; /* Optional: background color for the section */
+   /* Optional: background color for the section */
 }
 
+.dark .slider-header{
+  color: #fff;
+}
 .slider-header {
   font-size: 28px; /* Adjust font size */
   font-weight: bold; /* Make the header bold */
