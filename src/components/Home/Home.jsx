@@ -1,5 +1,4 @@
 import Hero from "../HeroSection/Hero";
-// import Hero from "./components/HeroSection/Hero";
 import imageData from "../../Data/imageData";
 import ImageCard from "../pages/ImageCard";
 import Slider from "../pages/Slider";

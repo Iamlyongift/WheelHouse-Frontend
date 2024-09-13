@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../Css/login.css'; // Ensure you have appropriate CSS styling
+import '../Css/login.css'; 
 const LoginPage = () => {
   return (
     <div className="login-page">

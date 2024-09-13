@@ -6,8 +6,8 @@ import Product from "./components/pages/Product";
 import Feature from "./components/pages/Feature";
 import Home from "./components/Home/Home";
 import Register from "./components/pages/Register";
-import LoginPage from "./components/pages/login";
 import Footer from "./components/pages/Footer";
+import LoginPage from "./components/pages/LoginPage";
 
 function App() {
   const current_theme = localStorage.getItem("current_theme");
