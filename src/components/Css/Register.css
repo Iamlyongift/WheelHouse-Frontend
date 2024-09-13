@@ -1,0 +1,115 @@
+src/Register.css
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+} */
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container-reg {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.register-section, .login-section {
+    padding: 2rem;
+    /* width: 50%; */
+}
+
+.register-section {
+    border-right: 1px solid #ddd;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.regi[type="text"], 
+.regi[type="email"], 
+.regi[type="password"], 
+.regi[type="tel"] {
+    width: 100%;
+    padding: 0.75rem; 
+    margin-bottom: 1rem;
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.login-btn {
+    width: auto;
+    padding: 0.75rem 2rem;
+    background-color: black;
+    color: white;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-section p {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .container-reg {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+ 
+  }

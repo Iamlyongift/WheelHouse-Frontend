@@ -1,0 +1,80 @@
+.img-phone{
+    width: 80%;
+    height: 300px;
+    border-radius: 10px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+     background-color: rgba(214, 43, 43, 0.144);
+  }
+  .phone-img{
+    width: 200px;
+    height: auto'
+  }
+  .phone-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .store{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+  }
+  .store div{
+    width: 160px;
+    height: 60px
+  }
+  .store div img{
+     width: 100%;
+     height: 100%;
+     object-fit: contain;
+  }
+  .app-side{
+    padding-block: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .text-area{
+    width:100%;
+    padding-inline: 4rem;
+  }
+
+  .app-side p{
+    line-height: 1.5rem;
+  }
+  .dark .app-side p{
+    color: #222;
+}
+  /* mobile view */
+  @media (max-width: 780px){
+    .img-phone{
+        width: 100%;
+        height:200px;
+        border-radius: 10px;
+        margin: 2rem auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+         background-color: rgba(214, 43, 43, 0.144);
+      }
+      .app-side{
+        padding-block: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .store div{
+        width: 100px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .app-side p{
+        font-size: small;
+      }
+  }
+  

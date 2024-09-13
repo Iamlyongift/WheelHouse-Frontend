@@ -1,0 +1,73 @@
+/* Slider.css */
+
+.slider-wrapper {
+  text-align: center; /* Center the header text */
+  padding: 20px 0; /* Space around the slider section */
+  background-color: #f8f8f8; /* Optional: background color for the section */
+}
+
+.slider-header {
+  font-size: 28px; /* Adjust font size */
+  font-weight: bold; /* Make the header bold */
+  margin-bottom: 20px; /* Space between header and slider */
+  color: #333; /* Change the color as needed */
+}
+
+.slider-container {
+  overflow: hidden; /* Hide overflow to create a clean infinite scroll */
+  white-space: nowrap; /* Prevent line breaks */
+  position: relative;
+  width: 100%; 
+  margin-top: 3rem
+ ;/* Adjust width as needed */
+}
+slider-header{
+  text-align: center;
+}
+
+.slider-track {
+  display: flex; /* Flex display to arrange items in a row */
+  gap: 20px; /* Add space between slider items */
+}
+
+.slider-item {
+  width: 400px;
+  height: 200px;
+  display: inline-block;
+  text-align: center; /* Center the text */
+  flex: 0 0 auto; /* Prevent items from shrinking */
+  transition: transform 0.3s ease; 
+  border-radius: 12px
+  /* Add some hover effect */
+}
+
+.slider-item img {
+  width: 100%; /* Adjust this value to increase the size */
+  height: 100%; /* Maintain aspect ratio or adjust as needed */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  transition: transform 0.3s ease-in-out; /* Smooth scaling on hover */
+}
+
+.slider-item p {
+  margin-top: 10px;
+  font-size: 14px; /* Adjust text size as needed */
+  text-decoration: none;
+  color: #222;
+}
+
+.slider-item:hover img {
+  transform: scale(1.1);
+  border-radius: 10px;
+  border: 2px solid #fff; /* Slightly enlarge on hover */
+}
+
+  
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
