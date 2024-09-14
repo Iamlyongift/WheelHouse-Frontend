@@ -124,7 +124,7 @@
 
 
 
-  /* @media (max-width: 1024px) and (min-width: 768px){
+  @media (max-width: 1024px) and (min-width: 768px){
     .home-section{
       width: 100%;
       display: flex;
@@ -141,4 +141,4 @@
       gap: 20px;
       padding-inline: 1.5rem;
     }
-  } */
+  }
