@@ -106,6 +106,12 @@
       justify-content: space-between;
       gap: 1rem;
     }
+    .options {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+     }
     .register-section p {
         width: 100%;
         height: auto;
