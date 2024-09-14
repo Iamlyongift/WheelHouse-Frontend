@@ -69,12 +69,15 @@
       }
       .store div{
         width: 100px;
-        height: 40px;
+        height: 50px;
         display: flex;
         flex-direction: column;
       }
       .app-side p{
         font-size: small;
+      }
+      .app-side p{
+        line-height: 1rem;
       }
   }
   
