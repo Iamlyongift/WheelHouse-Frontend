@@ -1,19 +1,13 @@
 .home {
   width: 100%;
   height:  100%;
-    display: flex;
-    flex-direction: column; /* Ensure elements are aligned in a row */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensure elements are aligned in a row */
     justify-content: space-between; 
     padding-inline: 10px;/* Add space between each image */
     gap: 10px; 
     margin-top: 3rem;/* Optional: Adds gap between the images */
   }
-  
-  /* .image-card {
-    width: 48%; /* Ensure each image takes up almost half the width 
-    position: relative;
-    overflow: hidden;
-  } */
 
 .image-card {
     position: relative;
@@ -25,6 +19,7 @@
   
   .image-card img {
     width: 100%;
+    height: 100%;
     transition: transform 0.5s ease;
     object-fit: cover;
   }
@@ -66,4 +61,23 @@
   .text p {
     font-size: 1.2em;
   }
+@media (max-width: 768px){
+  .image-card {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+  }
+  .home {
+    width: 100%;
+    height:  100%;
+      display: flex;
+      flex-direction: column; /* Ensure elements are aligned in a row */
+      justify-content: space-between; 
+      padding-inline: 10px;/* Add space between each image */
+      gap: 10px; 
+      margin-top: 3rem;/* Optional: Adds gap between the images */
+    }
+}
   
