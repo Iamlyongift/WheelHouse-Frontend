@@ -25,5 +25,8 @@
     align-items: center;
     padding-inline: 1rem;
    }
+   .guarantee-container span{
+    size: 20px;
+   }
     }
   

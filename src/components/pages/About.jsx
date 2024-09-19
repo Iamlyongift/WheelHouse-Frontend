@@ -1,4 +1,6 @@
-
+import imageONE from "../../assets/image3.png";
+import imageTWO from "../../assets/image2.png"
+import imageTHREE from "../../assets/image3.png"
 import '../Css/About.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faBox, faCheckCircle, faTruck } from '@fortawesome/free-solid-svg-icons'; // Your updated CSS styles
@@ -20,13 +22,13 @@ const About = () => {
       {/* Image Grid Section */}
       <section className="image-grid">
         <div className="image-item">
-          <img src="../../assets/image3.png" alt="Model 1" />
+          <img src={imageONE} alt="Model 1" />
         </div>
         <div className="image-item">
-          <img src="../../assets/image1.png" alt="Model 2" />
+          <img src={imageTWO} alt="Model 2" />
         </div>
         <div className="image-item">
-          <img src="../../assets/image2.png" alt="Model 3" />
+          <img src={imageTHREE} alt="Model 3" />
         </div>
       </section>
 
@@ -66,5 +68,8 @@ const About = () => {
     </div>
   );
 };
+
+
+
 
 export default About;

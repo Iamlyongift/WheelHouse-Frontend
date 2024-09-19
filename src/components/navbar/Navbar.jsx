@@ -31,17 +31,17 @@ const Navbar = ({ theme, setTheme }) => {
       />
 
       <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link to="/" onClick={toggleMenu}>
-          <li>Home</li>
+        <Link to="/" onClick={toggleMenu} >
+          <li id="hove">Home</li>
         </Link>
         <Link to="/product" onClick={toggleMenu}>
-          <li>Products</li>
+          <li id="hove">Products</li>
         </Link>
-        <Link to="/feature" onClick={toggleMenu}>
-          <li>Features</li>
+        <Link to="/feature" onClick={toggleMenu} >
+          <li id="hove">Features</li>
         </Link>
-        <Link to="/about" onClick={toggleMenu}>
-          <li>About</li>
+        <Link to="/about" onClick={toggleMenu} >
+          <li id="hove">About</li>
         </Link>
         <div>
 

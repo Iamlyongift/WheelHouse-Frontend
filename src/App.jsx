@@ -11,6 +11,7 @@ const Feature = lazy(() => import("./components/pages/Feature"));
 const Home = lazy(() => import("./components/Home/Home"));
 const Register = lazy(() => import("./components/pages/Register"));
 const LoginPage = lazy(() => import("./components/pages/LoginPage"));
+const PropertyPage = lazy(() => import("./components/pages/PropertyPage"));
 
 function App() {
   const current_theme = localStorage.getItem("current_theme");
@@ -27,6 +28,7 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/propertypage/:id" element={<PropertyPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/product" element={<Product />} />

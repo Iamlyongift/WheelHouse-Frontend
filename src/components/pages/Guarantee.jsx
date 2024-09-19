@@ -9,14 +9,14 @@ const Guarantee = () => {
     <section className="guarantee-container">
       <div>
         <span>
-          <IoCallOutline size={80} />
+          <IoCallOutline size={50} />
         </span>
         <h4>24/7 Customer Service</h4>
         <p>We're here to help you with any questions or concerns you have</p>
       </div>
       <div>
         <span>
-          <TbTruckReturn size={80} />
+          <TbTruckReturn size={50} />
         </span>
         <h4>14-Day Money Back</h4>
         <p>
@@ -26,7 +26,7 @@ const Guarantee = () => {
       </div>
       <div>
         <span>
-          <LuBadgeCheck size={80}/>
+          <LuBadgeCheck size={50}/>
         </span>
         <h4>Our Guarantee</h4>
         <p>
@@ -35,7 +35,7 @@ const Guarantee = () => {
       </div>
       <div>
         <span>
-          <LiaShippingFastSolid size={80}/>
+          <LiaShippingFastSolid size={50}/>
         </span>
         <h4>Shippin Nationwide</h4>
         <p>

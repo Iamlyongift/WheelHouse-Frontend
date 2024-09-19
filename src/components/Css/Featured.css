@@ -11,6 +11,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding-inline: 1.5rem;
+    overflow: hidden;
   }
   .home-section{
     width: 100%;
@@ -33,12 +34,12 @@
     width: 350px;
     height: 200px;
   }
-  .home-img-holder .descriptions h3 a{
-    color: black;
+  .home-img-holder .descriptions h3 Link{
+    color: red;
     text-decoration: underline;
   }
-  .dark .home-img-holder .descriptions h3 a{
-    color: #fff;
+  .dark .home-img-holder .descriptions h3 Link{
+    color: red;
   }
   .home-img-holder div img{
     width: 100%;
@@ -103,6 +104,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       padding-inline: 1.5rem;
+      overflow: hidden;
     }
     .home-section{
       width: 100%;
