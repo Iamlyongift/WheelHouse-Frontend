@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
+// import Contact from "./components/pages/Contact";
 
 // Lazy load your components
 const About = lazy(() => import("./components/pages/About"));
 const Product = lazy(() => import("./components/pages/Product"));
-const Feature = lazy(() => import("./components/pages/Feature"));
+const Contact = lazy(() => import("./components/pages/Contact"));
 const Home = lazy(() => import("./components/Home/Home"));
 const Register = lazy(() => import("./components/pages/Register"));
 const LoginPage = lazy(() => import("./components/pages/LoginPage"));
@@ -32,7 +33,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/feature" element={<Feature />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Suspense>

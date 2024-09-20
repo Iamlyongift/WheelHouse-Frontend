@@ -20,7 +20,7 @@ const Home = () => {
       <Slider className="slida" />
       <Guarantee className="Guarentee-scection" />
       <motion.div
-        variants={fadeIn("up", 0.2)}
+        variants={fadeIn("left", 0.2)}
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
@@ -47,9 +47,21 @@ const Home = () => {
           subtitle="Shop Now"
         />
       </motion.div>
+      <motion.div
+      variants={fadeIn("right", 0.3)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.7 }}>
       <FeaturedHomes />
+      </motion.div>
       <Testimonials className="reviews-sections" />
-      <AppPromotion />
+     <motion.div
+     variants={fadeIn("up", 0.4)}
+     initial="hidden"
+     whileInView={"show"}
+     viewport={{ once: false, amount: 0.5 }}>
+     <AppPromotion />
+     </motion.div>
     </div>
   );
 };

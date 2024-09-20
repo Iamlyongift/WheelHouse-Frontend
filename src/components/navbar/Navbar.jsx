@@ -6,7 +6,7 @@ import search_icon_light from "../../assets/search-w.png";
 import search_icon_dark from "../../assets/search-b.png";
 import toggle_light from "../../assets/night.png";
 import toggle_dark from "../../assets/day.png";
-import { GiShoppingCart } from "react-icons/gi";
+import { CiHeart } from "react-icons/ci";;
 import { IoMdContact } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -37,8 +37,8 @@ const Navbar = ({ theme, setTheme }) => {
         <Link to="/product" onClick={toggleMenu}>
           <li id="hove">Products</li>
         </Link>
-        <Link to="/feature" onClick={toggleMenu} >
-          <li id="hove">Features</li>
+        <Link to="/contact" onClick={toggleMenu} >
+          <li id="hove">Contact</li>
         </Link>
         <Link to="/about" onClick={toggleMenu} >
           <li id="hove">About</li>
@@ -58,8 +58,8 @@ const Navbar = ({ theme, setTheme }) => {
         <Link to="/register">
           <IoMdContact size={40}  className="log"/>
         </Link>
-        <Link to="/cart">
-          <GiShoppingCart size={40}  className="cat"/>
+        <Link to="/wishlist">
+          <CiHeart size={40}  className="cat"/>
         </Link>
       </div>
       </div>
@@ -84,8 +84,8 @@ const Navbar = ({ theme, setTheme }) => {
         <Link to="/register">
           <IoMdContact size={40} />
         </Link>
-        <Link to="/cart">
-          <GiShoppingCart size={40} />
+        <Link to="/wishlist">
+          <CiHeart size={40} />
         </Link>
       </div>
 
