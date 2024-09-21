@@ -19,13 +19,7 @@ const Home = () => {
       <Hero data={imageData} />
       <Slider className="slida" />
       <Guarantee className="Guarentee-scection" />
-      <motion.div
-        variants={fadeIn("left", 0.2)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: false, amount: 0.7 }}
-        className="home"
-      >
+      <div className="home">
         <ImageCard
           imageSrc={bestSellerImage}
           title="Best Sellers"
@@ -46,22 +40,17 @@ const Home = () => {
           title="New Arrivals"
           subtitle="Shop Now"
         />
-      </motion.div>
-      <motion.div
-      variants={fadeIn("right", 0.3)}
-      initial="hidden"
-      whileInView={"show"}
-      viewport={{ once: false, amount: 0.7 }}>
+      </div>
       <FeaturedHomes />
-      </motion.div>
       <Testimonials className="reviews-sections" />
-     <motion.div
-     variants={fadeIn("up", 0.4)}
-     initial="hidden"
-     whileInView={"show"}
-     viewport={{ once: false, amount: 0.5 }}>
-     <AppPromotion />
-     </motion.div>
+      <motion.div
+        variants={fadeIn("up", 0.4)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.5 }}
+      >
+        <AppPromotion />
+      </motion.div>
     </div>
   );
 };
