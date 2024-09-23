@@ -3,11 +3,13 @@ import "../Css/Slider.css"
 import imageOne from "../../assets/image1.png";
 import imageTwo from "../../assets/image2.png";
 import imageThree from "../../assets/image3.png";
+import { Link } from "react-router-dom";
+
 
 const products = [
-  { id: 1, name: "Product 1", image: imageOne, link: "/buy/1" },
-  { id: 2, name: "Product 2", image: imageTwo, link: "/buy/2" },
-  { id: 3, name: "Product 3", image: imageThree, link: "/buy/3" },
+  { id: 1, name: "Product 1", image: imageOne, link: "/product" },
+  { id: 2, name: "Product 2", image: imageTwo, link: "/product"  },
+  { id: 3, name: "Product 3", image: imageThree, link: "/product"  },
   // Add more products as needed
 ];
 
@@ -40,10 +42,10 @@ const Slider = () => {
       <div className="slider-container" ref={sliderRef}>
         <div className="slider-track">
           {products.map((product) => (
-            <a href={product.link} key={product.id} className="slider-item">
+            <Link href={product.link} key={product.id} className="slider-item">
               <img src={product.image} alt={product.name} />
               <p>{product.name}</p>
-            </a>
+            </Link>
           ))}
           {/* Duplicate items for seamless infinite scroll */}
           {products.map((product) => (

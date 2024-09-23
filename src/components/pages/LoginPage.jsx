@@ -19,9 +19,10 @@ const LoginPage = () => {
               <label>
                 <input type="checkbox" /> Remember
               </label>
-              <a href="#" className="forgot-password">Forgot Your Password?</a>
+              <Link to="forgotpassword" className="forgot-password">Forgot Your Password?</Link>
             </div>
-            <button type="submit" className="login-button">LOGIN</button>
+            <Link to="/my-account"><button type="submit" className="login-button">LOGIN</button></Link>
+            
           </form>
         </div>
         <div className="register-section">

@@ -1,5 +1,4 @@
-import Hero from "../HeroSection/Hero";
-import imageData from "../../Data/imageData";
+
 import ImageCard from "../pages/ImageCard";
 import Slider from "../pages/Slider";
 import newArrivalImage from "../../assets/image3.png";
@@ -16,7 +15,6 @@ import { fadeIn } from "../../Data/Variants";
 const Home = () => {
   return (
     <div>
-      <Hero data={imageData} />
       <Slider className="slida" />
       <Guarantee className="Guarentee-scection" />
       <div className="home">

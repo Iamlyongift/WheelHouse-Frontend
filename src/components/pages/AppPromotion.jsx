@@ -14,7 +14,7 @@ const AppPromotion = () => {
       </div>
 
       <div className="app-side">
-        <h3>Get more done with our app.</h3>
+        <h3 className="spanTWO">Get more done with our <span >App</span></h3>
         <p>
           Unlock exclusive features: save searches, track inquiries, and more with our app. <br />
           Available on iOS and Android.

@@ -1,99 +1,95 @@
-import { useState } from "react";
+// import React from 'react';
+import { useState, useEffect } from "react";
 import "./Navbar.css";
-import logo_light from "../../assets/logo-black.png";
-import logo_dark from "../../assets/logo-white.png";
-import search_icon_light from "../../assets/search-w.png";
-import search_icon_dark from "../../assets/search-b.png";
-import toggle_light from "../../assets/night.png";
-import toggle_dark from "../../assets/day.png";
-import { CiHeart } from "react-icons/ci";;
-import { IoMdContact } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import video from "../../assets/video1.mp4";
+import { Link, useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
-const Navbar = ({ theme, setTheme }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggle_mode = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+const NavigationBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        // When scrolled down 50px or more
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbar">
-      <img
-        src={theme === "light" ? logo_light : logo_dark}
-        alt="logo"
-        className="logo"
-      />
-
-      <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link to="/" onClick={toggleMenu} >
-          <li id="hove">Home</li>
+    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      <Link to="/" className="link-home"><div className="brand-name"><span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span></div></Link>
+      <div className="menu-icon" onClick={toggleMenu}>
+        &#9776; {/* Hamburger Icon */}
+      </div>
+      <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+        <Link id="hove" className="links" to="/about">
+          About
         </Link>
-        <Link to="/product" onClick={toggleMenu}>
-          <li id="hove">Products</li>
+        <Link id="hove" className="links" to="/contact">
+          Contact
         </Link>
-        <Link to="/contact" onClick={toggleMenu} >
-          <li id="hove">Contact</li>
+        <Link id="hove" className="links" to="/houses">
+          Houses
         </Link>
-        <Link to="/about" onClick={toggleMenu} >
-          <li id="hove">About</li>
+        <Link id="hove" className="links" to="/product">
+          Cars
         </Link>
-        <div>
-
-        </div>
-        <div className="input-side">
-        <div id="phone-search">
-        <input type="text" placeholder="search" />
-        <img
-          src={theme === "light" ? search_icon_light : search_icon_dark}
-          alt="search"
-        />
-        </div>
-        <div id="icons">
-        <Link to="/register">
-          <IoMdContact size={40}  className="log"/>
-        </Link>
-        <Link to="/wishlist">
-          <CiHeart size={40}  className="cat"/>
+        <Link id="hove" className="links" to="/register">
+          Login
         </Link>
       </div>
-      </div>
-      </ul>
+    </nav>
+  );
+};
 
-      <div className="search-box">
-        <input type="text" placeholder="search" />
-        <img
-          src={theme === "light" ? search_icon_light : search_icon_dark}
-          alt="search"
-        />
-      </div>
-
-      <img
-        onClick={toggle_mode}
-        src={theme === "light" ? toggle_light : toggle_dark}
-        alt="toggle-icon"
-        className="toggle-icon"
-      />
-
-      <div className="icons">
-        <Link to="/register">
-          <IoMdContact size={40} />
-        </Link>
-        <Link to="/wishlist">
-          <CiHeart size={40} />
-        </Link>
-      </div>
-
-      <div className="hamburger" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
+const HeroSection = () => {
+  return (
+    <div className="hero-container">
+      <video autoPlay loop muted>
+        <source src={video} type="video/mp4" />
+      </video>
+      {/* Dark Overlay */}
+      <div className="overlay"></div>
+      <div className="hero-content">
+        <h1>
+          Premium <span>Luxury</span>
+        </h1>
+        <p>You can Purchase any of our luxurious <span className="spanTWO">cars</span> & <span className="spanTWO">houses</span>.</p>
+        
       </div>
     </div>
   );
 };
 
-export default Navbar;
+const HomePage = () => {
+  // Get the current location
+  const location = useLocation();
+
+  return (
+    <div className="homepage">
+      {/* Display Navbar on all pages */}
+      <NavigationBar />
+
+      {/* Display HeroSection only on the homepage */}
+      {location.pathname === "/" && <HeroSection />}
+    </div>
+  );
+};
+
+export default HomePage;

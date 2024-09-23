@@ -1,4 +1,4 @@
-import "../Css/ImageCard.css.css"
+import "../Css/ImageCard.css"
 
 const ImageCard = ({ imageSrc, title, subtitle }) => {
   return (

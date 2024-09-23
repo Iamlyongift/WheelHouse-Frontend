@@ -35,7 +35,7 @@ const About = () => {
       {/* Service Features Section */}
       <section className="service-features">
       <div className="feature-item">
-        <FontAwesomeIcon icon={faPhone} size="2x" />
+        <FontAwesomeIcon icon={faPhone} size="2x"  className="sub-link"/>
         <h3>24/7 Customer Service</h3>
         <p>We're here to help you with any questions or concerns you have, 24/7.</p>
       </div>

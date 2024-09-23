@@ -13,7 +13,7 @@ const HomeCard = ({ house }) => {
         </div>
         <div className="descriptions">
           <h3>
-            <Link to={`/propertypage/${house.id}`}>{house.title}</Link> {/* Use house ID */}
+            <Link to={`/propertypage/${house.id}`} className="featured-link">{house.title}</Link> {/* Use house ID */}
           </h3>
           <p>{house.description}</p>
           <hr />

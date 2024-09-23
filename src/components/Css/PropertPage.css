@@ -45,7 +45,16 @@ aside {
 }
 .divONe h1 {
   text-decoration: underline;
-  color: red;
+  color: #f8b400;
+}
+.dark .contact-details,
+.dark .contact-form{
+  background-color: #ccc;
+  color: #fff;
+}
+.dark .contact-details p,
+.dark .social-icons a{
+  color: #fff;
 }
 .price {
   font-size: 24px;

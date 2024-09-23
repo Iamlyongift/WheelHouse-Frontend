@@ -15,6 +15,9 @@
 .dark div{
     color: #fff;
 }
+.guarantee-container div span{
+    color: #f8b400;
+}
 
  /* Responsive Design */
  @media (max-width: 768px) {

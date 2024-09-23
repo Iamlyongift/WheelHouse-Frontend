@@ -1,5 +1,4 @@
 /* Slider.css */
-
 .slider-wrapper {
   text-align: center; /* Center the header text */
   padding: 20px 0; /* Space around the slider section */
@@ -7,13 +6,13 @@
 }
 
 .dark .slider-header{
-  color: #fff;
+  color: #f8b400;
 }
 .slider-header {
   font-size: 28px; /* Adjust font size */
   font-weight: bold; /* Make the header bold */
   margin-bottom: 20px; /* Space between header and slider */
-  color: #333; /* Change the color as needed */
+  color: #f8b400;
 }
 
 .slider-container {
@@ -21,12 +20,13 @@
   white-space: nowrap; /* Prevent line breaks */
   position: relative;
   width: 100%; 
-  margin-top: 3rem
- ;/* Adjust width as needed */
+  margin-top: 3rem;/* Adjust width as needed */
 }
 slider-header{
   text-align: center;
 }
+
+
 
 .slider-track {
   display: flex; /* Flex display to arrange items in a row */

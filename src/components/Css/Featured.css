@@ -34,13 +34,11 @@
     width: 350px;
     height: 200px;
   }
-  .home-img-holder .descriptions h3 Link{
-    color: red;
+  .home-img-holder .descriptions h3 .featured-link{
+    color: #f8b400;
     text-decoration: underline;
   }
-  .dark .home-img-holder .descriptions h3 Link{
-    color: red;
-  }
+ 
   .home-img-holder div img{
     width: 100%;
     height: 100%;

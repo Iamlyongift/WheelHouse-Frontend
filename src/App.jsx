@@ -1,9 +1,9 @@
-import { Suspense, useEffect, useState, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
-// import Contact from "./components/pages/Contact";
+
 
 // Lazy load your components
 const About = lazy(() => import("./components/pages/About"));
@@ -13,19 +13,13 @@ const Home = lazy(() => import("./components/Home/Home"));
 const Register = lazy(() => import("./components/pages/Register"));
 const LoginPage = lazy(() => import("./components/pages/LoginPage"));
 const PropertyPage = lazy(() => import("./components/pages/PropertyPage"));
-
+const ProfilePage = lazy(() => import("./components/pages/ProfilePage"));
+const ForgottenPassWord = lazy(() => import("./components/pages/ForgottenPassWord"));
 function App() {
-  const current_theme = localStorage.getItem("current_theme");
-  const [theme, setTheme] = useState(current_theme ? current_theme : "light");
-
-  useEffect(() => {
-    localStorage.setItem("current_theme", theme);
-  }, [theme]);
-
   return (
     <Router>
-      <div className={`container ${theme}`}>
-        <Navbar theme={theme} setTheme={setTheme} />
+      <div>
+        <Navbar />
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -35,6 +29,8 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/my-account" element={<ProfilePage />} />
+            <Route path="/forgotpassword" element={<ForgottenPassWord />} />
           </Routes>
         </Suspense>
       </div>
