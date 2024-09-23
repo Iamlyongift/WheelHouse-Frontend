@@ -1,0 +1,134 @@
+.content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+
+  .container {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    margin-top: 4rem;
+  }
+  
+  .row {
+    display: flex;
+    width: 100%;
+  }
+  
+  .sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+  }
+  
+  .profile-section {
+    text-align: center;
+  }
+  
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .nav-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin: 10px 0;
+    cursor: pointer;
+    cursor: pointer;
+  }
+  
+  .content {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select.input-field {
+    height: 45px;
+  }
+  
+  .btn-submit {
+    background-color: #f8b400;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #f8b600a2;
+  }
+  
+  /* Responsive Design */
+@media (max-width: 768px) {
+    /* Stack the sidebar and content vertically */
+    .row {
+      flex-direction: column;
+    }
+  
+    /* Sidebar takes full width */
+    .sidebar {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    /* Main content takes full width */
+    .content {
+      max-width: 100%;
+    }
+  
+    /* Stack inputs vertically on smaller screens */
+    .input-row {
+      flex-direction: column;
+    }
+  
+    .input-field {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-img {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .content h1 {
+      font-size: 24px;
+    }
+  
+    .btn-submit {
+      width: 100%;
+      font-size: 18px;
+    }
+  }

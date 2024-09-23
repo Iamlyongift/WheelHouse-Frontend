@@ -1,0 +1,54 @@
+/* CarCardSection.css */
+.car-card-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: 10rem;
+  }
+  
+  .car-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .car-card-image img:hover {
+    transform: scale(1.05); /* Zoom-in effect */
+  }
+  
+  .car-card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .car-card-details {
+    padding: 15px;
+  }
+  
+  .car-price {
+    background: #f8b400;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .car-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .car-card p {
+    color: #666;
+    margin-top: 5px;
+  }
+  
