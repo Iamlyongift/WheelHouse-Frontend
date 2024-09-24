@@ -11,9 +11,7 @@
     margin-bottom: 50px;
     margin-top: 3rem;
   }
-  .dark .about-header p{
-    color: #fff;
-  }
+
   
   .about-header h1 {
     font-size: 2.5rem;
@@ -93,7 +91,7 @@
   
   /* Subscription Section */
   .subscription {
-    background-color: #438029; /* light green color */
+    background-color: #438029; 
     padding: 40px;
     text-align: center;
     border-radius: 10px;
@@ -156,13 +154,8 @@
     .subscription-form input {
       width: 100%;
     }
+
   }
-  
-
-
-
-
-
 
   /* Container for the whole about page */
 .about-container {
@@ -182,11 +175,12 @@
   margin-bottom: 40px;
 }
 .team-section h2 span{
-  color: #f8b400;
+   color: #f8b400;
 }
 
 .team-container {
   display: flex;
+  height: auto;
   justify-content: space-around;
   gap: 20px;
 }
@@ -222,5 +216,20 @@
   .team-container {
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+     
+      gap: 10rem;
+  }
+  .team-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    height: 400px;
+    background-color: #438029;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 3rem;
   }
 }
