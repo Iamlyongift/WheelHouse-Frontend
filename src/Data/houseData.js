@@ -1,7 +1,7 @@
-import imageOne from "../assets/houseOne.jpg";
-import imageTwo from "../assets/houseThree.jpg";
-import imageThree from "../assets/houseTwo.jpg";
-import imageFour from "../assets/housefour.jpg"
+import imageOne from "../assets/DuplexFive.jpg";
+import imageTwo from "../assets/DuplexFour.jpg";
+import imageThree from "../assets/DuplexSix.jpg";
+import imageFour from "../assets/DuplexEight.jpg"
 
 const houseData = [
     {
@@ -25,6 +25,7 @@ const houseData = [
     {
       id: 3,
       imgSrc:  imageThree,
+      imgSrc2:  imageFour,
       title: "Semi-detached bungalow for rent",
       description:
         "Exquisitely finished 4-bedroom terrace duplex with swimming pool in Ikeja GRA available for a minimum of 2 years rent.",

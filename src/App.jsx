@@ -14,7 +14,11 @@ const Register = lazy(() => import("./components/pages/Register"));
 const LoginPage = lazy(() => import("./components/pages/LoginPage"));
 const PropertyPage = lazy(() => import("./components/pages/PropertyPage"));
 const ProfilePage = lazy(() => import("./components/pages/ProfilePage"));
-const ForgottenPassWord = lazy(() => import("./components/pages/ForgottenPassWord"));
+const WishList = lazy(() => import("./components/pages/WishList"));
+const Pagination = lazy(() => import("./components/pages/Pagination"));
+const ForgottenPassWord = lazy(() =>
+  import("./components/pages/ForgottenPassWord")
+);
 function App() {
   return (
     <Router>
@@ -31,6 +35,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/my-account" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgottenPassWord />} />
+            <Route path="/wishlist" element={<WishList />} />
+            <Route path="/paginations" element={<Pagination/>} />
           </Routes>
         </Suspense>
       </div>

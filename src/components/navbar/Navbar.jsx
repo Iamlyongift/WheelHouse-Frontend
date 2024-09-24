@@ -44,7 +44,7 @@ const NavigationBar = () => {
         <Link id="hove" className="links" to="/contact">
           Contact
         </Link>
-        <Link id="hove" className="links" to="/houses">
+        <Link id="hove" className="links" to="/paginations">
           Houses
         </Link>
         <Link id="hove" className="links" to="/product">

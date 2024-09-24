@@ -36,27 +36,13 @@ const Contact = () => {
   ];
   return (
     <section>
-      <h2 className="contact-header">Contact Us</h2>
-      <div className="map-section">
-        <iframe
-          width="100%"
-          height="600"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=329%20Queensberry%20Street,%20North%20Melbourne%20VIC3051,%20Australia.+(WheelHouse)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-        >
-          <a href="https://www.gps.ie/">gps trackers</a>
-        </iframe>
-      </div>
+     
 
       <div className="contact-container">
         <div className="contact-form">
-          <h1>Get In Touch</h1>
+          <h1 className="contact-header">Get In Touch</h1>
           <p>
-            Etiam pharetra egestas interdum blandit viverra morbi consequat mi
-            non bibendum egestas quam egestas nulla.
+          To make requests for further information, contact us via our social channels.
           </p>
           <form>
             <div className="form-group">
@@ -92,7 +78,7 @@ const Contact = () => {
         </div>
 
         <div className="contact-details">
-          <h2>Contact details</h2>
+          <h2 className="contact-head">Contact details</h2>
           <p>
             Etiam pharetra egestas interdum blandit viverra morbi consequat mi
             non bibendum egestas quam egestas nulla.
@@ -138,7 +124,7 @@ const Contact = () => {
       </div>
 
       <div className="offices-container">
-        <h1>Our Offices</h1>
+        <h1 className="contact-head">Our Offices</h1>
         <div className="offices">
           {officeData.map((office, index) => (
             <div className="office" key={index}>
@@ -158,6 +144,21 @@ const Contact = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <h2 className="contact-header">Locate Us</h2>
+      <div className="map-section">
+        <iframe
+          width="100%"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=329%20Queensberry%20Street,%20North%20Melbourne%20VIC3051,%20Australia.+(WheelHouse)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        >
+          <a href="https://www.gps.ie/">gps trackers</a>
+        </iframe>
       </div>
     </section>
   );

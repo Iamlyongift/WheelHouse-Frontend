@@ -2,10 +2,12 @@
 .contact-header{
     font-size: 2em;
     margin-left: 1rem;
-    margin-top: 5rem;
     color: #f8b400;
 }
-
+.contact-head{
+  font-size: 2em;
+  color: #f8b400;
+}
 
 .map-section {
   width: 100%;
@@ -18,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   padding: 50px;
+  margin-top: 4rem;
 }
 
 .contact-form,

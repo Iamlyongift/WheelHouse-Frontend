@@ -1,14 +1,26 @@
+import { useState } from "react";
 import "../Css/PropertPage.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import houseData from "../../Data/houseData";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa"; // Import both heart icons
 
 const PropertyPage = () => {
   const { id } = useParams(); // Get the house ID from URL params
   const house = houseData.find((house) => house.id === parseInt(id)); // Find the house by ID
+
+  const [wishlist, setWishlist] = useState([]); // State for wishlist
+
+  // Toggle wishlist function
+  const toggleWishlist = (id) => {
+    setWishlist((prevWishlist) =>
+      prevWishlist.includes(id)
+        ? prevWishlist.filter((houseId) => houseId !== id)
+        : [...prevWishlist, id]
+    );
+  };
 
   if (!house) {
     return <div>Property not found</div>; // Handle case where house is not found
@@ -17,9 +29,12 @@ const PropertyPage = () => {
   return (
     <div className="property-page">
       <div className="main-content">
-        {/* <h1 className="property-header">Property Details {house.title}</h1> */}
         <ImageSlider house={house} /> {/* Pass house to ImageSlider */}
-        <PropertyDetails house={house} /> {/* Pass house to PropertyDetails */}
+        <PropertyDetails
+          house={house}
+          isWishlisted={wishlist.includes(house.id)} // Check if house is wishlisted
+          toggleWishlist={toggleWishlist} // Pass toggle function
+        />
         <SafetyTips />
       </div>
       <aside>
@@ -59,7 +74,11 @@ function ImageSlider({ house }) {
 function ContactForm({ house }) {
   return (
     <form className="contact-form">
-      <h1>Contact Us</h1>
+      <h1>Schedule a visit</h1>
+      <p>
+        Duis aute irure dolor in reprehenderit in vate velit cillum culpa qui
+        officia deserunt mollit anim id est.
+      </p>
       <input type="text" placeholder="Name" />
       <input type="text" placeholder="Phone" />
       <input type="email" placeholder="Email" />
@@ -73,7 +92,7 @@ function ContactForm({ house }) {
 }
 
 // PropertyDetails: Receives house and displays its details
-function PropertyDetails({ house }) {
+function PropertyDetails({ house, isWishlisted, toggleWishlist }) {
   return (
     <div className="property-details">
       <div className="divONe">
@@ -81,8 +100,12 @@ function PropertyDetails({ house }) {
         <p>{house.description}</p>
         <span className="price">{house.price}</span>
       </div>
-      <div>
-        <FaRegHeart size={25} />
+      <div onClick={() => toggleWishlist(house.id)}> {/* Add click event to toggle wishlist */}
+        {isWishlisted ? (
+          <FaHeart size={25} color="red" /> // Filled heart if wishlisted
+        ) : (
+          <FaRegHeart size={25} /> // Empty heart if not wishlisted
+        )}
       </div>
     </div>
   );
