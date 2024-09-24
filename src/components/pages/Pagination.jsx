@@ -1,16 +1,16 @@
 import { useState } from "react";
 import HouseCard from "../pages/HouseCard"; // Import the HouseCard component
 import "../Css/Pagination.css"; // We'll style pagination buttons here
-import houseone from "../../assets/duplexOne.jpg";
+import houseone from "../../assets/DuplexOne.jpg";
 import housetwo from "../../assets/DuplexTwo.jpg"
-import housethree from "../../assets/duplexThree.jpg";
-import housefour from "../../assets/duplexFour.jpg";
-import housefive from "../../assets/duplexFive.jpg";
-import housesix from "../../assets/duplexSix.jpg";
-import houseseven from "../../assets/duplexSeven.jpg";
-import houseeight from "../../assets/duplexEight.jpg";
-import housenine from "../../assets/duplexNine.jpg";
-import houseten from "../../assets/duplexFour.jpg";
+import housethree from "../../assets/DuplexThree.jpg";
+import housefour from "../../assets/DuplexFour.jpg";
+import housefive from "../../assets/DuplexFive.jpg";
+import housesix from "../../assets/DuplexSix.jpg";
+import houseseven from "../../assets/DuplexSeven.jpg";
+import houseeight from "../../assets/DuplexEight.jpg";
+import housenine from "../../assets/DuplexNine.jpg";
+import houseten from "../../assets/DuplexFour.jpg";
 const houseData = [
   {
     id: 1,
