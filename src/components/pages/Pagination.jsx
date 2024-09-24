@@ -2,7 +2,7 @@ import { useState } from "react";
 import HouseCard from "../pages/HouseCard"; // Import the HouseCard component
 import "../Css/Pagination.css"; // We'll style pagination buttons here
 import houseone from "../../assets/duplexOne.jpg";
-import housetwo from "../../assets/duplexTwo.jpg";
+import housetwo from "../../assets/DuplexTwo.jpg"
 import housethree from "../../assets/duplexThree.jpg";
 import housefour from "../../assets/duplexFour.jpg";
 import housefive from "../../assets/duplexFive.jpg";
