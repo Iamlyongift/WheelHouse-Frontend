@@ -1,0 +1,118 @@
+.car-detail-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding-inline: 1rem;
+    background-color: #f8f9fa; /* Light background */
+    margin: 6rem auto;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background for the main content */
+  }
+  
+  .car-detail-images {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+  }
+  
+  .car-detail-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ffcc00; /* Gold border */
+  }
+  
+  .additional-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .additional-images img {
+    width: 30%;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid #004d40; /* Dark green border */
+  }
+  
+  .car-detail-info {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .car-detail-info h1 {
+    font-size: 28px;
+    color: #004d40; /* Dark green */
+    margin-bottom: 15px;
+  }
+  
+  .car-detail-info p {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .car-detail-info p span {
+    color: #ffcc00; /* Gold for highlighting */
+  }
+  
+  .car-detail-info button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #004d40; /* Dark green */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .car-detail-info button:hover {
+    background-color: #00332c; /* Even darker green */
+  }
+  
+  .car-detail-info a {
+    text-decoration: none;
+  }
+
+
+  @media (max-width: 768px) {
+    .car-detail-page {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .car-detail-images,
+    .car-detail-info {
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .car-detail-images img {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  
+    .additional-images img {
+      width: 30%;
+    }
+  
+    .car-detail-info h1 {
+      font-size: 24px;
+    }
+  
+    .car-detail-info p {
+      font-size: 14px;
+    }
+  
+    .car-detail-info button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+    }
+  }

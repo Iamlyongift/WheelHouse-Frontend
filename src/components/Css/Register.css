@@ -1,12 +1,4 @@
 
-
-/* body {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .container-reg {
     display: flex;
     background-color: white;
@@ -54,7 +46,7 @@ input[type="checkbox"] {
 }
 
 a {
-    color: #f8b400;
+    color: #00332c;
     text-decoration: none;
 }
 
@@ -66,22 +58,23 @@ button {
     width: 100%;
     padding: 0.75rem;
     border: none;
-    background-color: #f8b400;
+    background-color: #00332c;
     color: white;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
 }
-
-button:hover {
-    background-color: #333;
+button:hover{
+    background-color: #5bc8ba4b;
 }
+
+
 
 .login-btn {
     width: auto;
     padding: 0.75rem 2rem;
-    background-color: black;
+    background-color: #00332c;
     color: white;
    
 }

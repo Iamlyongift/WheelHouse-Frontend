@@ -84,13 +84,16 @@
 .login-button,
 .register-button {
   padding: 0.75rem;
-  background-color: #f8b400;
+  background-color: #00332c;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
   margin-top: 0.5rem;
+}
+.login-button:hover{
+  background-color: #5bc8ba4b;
 }
 
 .register-section p {
@@ -100,9 +103,11 @@
 }
 
 .register-section .register-button {
-  background-color: #f8b400;
+  background-color: #00332c;
 }
-
+.register-button:hover{
+    background-color: #5bc8ba4b;
+}
 @media (max-width: 768px) {
   .login-container {
     width: 100%;

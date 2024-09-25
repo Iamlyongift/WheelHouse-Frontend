@@ -15,7 +15,9 @@ const LoginPage = lazy(() => import("./components/pages/LoginPage"));
 const PropertyPage = lazy(() => import("./components/pages/PropertyPage"));
 const ProfilePage = lazy(() => import("./components/pages/ProfilePage"));
 const WishList = lazy(() => import("./components/pages/WishList"));
+const CarDetails = lazy(() => import("./components/pages/CarDetails"));
 const Pagination = lazy(() => import("./components/pages/Pagination"));
+const BankDetails = lazy(() => import("./components/pages/BankDetails"));
 const ForgottenPassWord = lazy(() =>
   import("./components/pages/ForgottenPassWord")
 );
@@ -30,13 +32,15 @@ function App() {
             <Route path="/propertypage/:id" element={<PropertyPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/product" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/my-account" element={<ProfilePage />} />
             <Route path="/forgotpassword" element={<ForgottenPassWord />} />
             <Route path="/wishlist" element={<WishList />} />
-            <Route path="/paginations" element={<Pagination/>} />
+            <Route path="/paginations" element={<Pagination />} />
+            <Route path="/cars" element={<Product />} />
+            <Route path="/cars/:id" element={<CarDetails />} />
+            <Route path="/bankdetails/:id" element={<BankDetails />} />
           </Routes>
         </Suspense>
       </div>

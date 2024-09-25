@@ -1,0 +1,117 @@
+.payment-page {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    padding: 20px;
+    max-width: 600px;
+    margin: 5rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background for the main content */
+  }
+  
+  .payment-page h1 {
+    font-size: 28px;
+    color: #004d40; /* Dark green */
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .payment-page p {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .payment-page .bank-details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .payment-page h2 {
+    font-size: 22px;
+    color: #ffcc00; /* Gold */
+    margin-bottom: 10px;
+  }
+  
+  .payment-page h6 {
+    font-size: 14px;
+    color: #004d40; /* Dark green */
+    margin-bottom: 20px;
+  }
+  
+  .payment-page .bank-details p {
+    font-size: 16px;
+    color: #333333;
+    margin: 5px 0;
+  }
+  
+  .payment-page input[type="file"] {
+    margin-top: 15px;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .payment-page button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #004d40; /* Dark green */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .payment-page button:hover {
+    background-color: #00332c; /* Even darker green */
+  }
+  
+  .payment-page input[type="file"] {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #004d40; /* Dark green border */
+    background-color: #f1f1f1;
+  }
+  
+  .payment-page input[type="file"]:hover {
+    border-color: #00332c; /* Darker green on hover */
+  }
+  
+
+  @media (max-width: 768px) {
+    .payment-page {
+      max-width: 100%;
+      padding: 15px;
+    }
+  
+    .payment-page h1 {
+      font-size: 24px;
+    }
+  
+    .payment-page h2 {
+      font-size: 20px;
+    }
+  
+    .payment-page p,
+    .payment-page h6,
+    .payment-page .bank-details p {
+      font-size: 14px;
+    }
+  
+    .payment-page input[type="file"] {
+      font-size: 12px;
+    }
+  
+    .payment-page button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+    }
+  }

@@ -66,6 +66,10 @@
     color: #666;
     margin-top: 5px;
   }
+  .car-title{
+    text-decoration: none;
+    color: #00332c;
+  }
 
   .pagination {
     display: flex;

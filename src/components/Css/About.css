@@ -91,7 +91,7 @@
   
   /* Subscription Section */
   .subscription {
-    background-color: #438029; 
+    background-color: #00332c; 
     padding: 40px;
     text-align: center;
     border-radius: 10px;
@@ -225,7 +225,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px;
     height: 400px;
-    background-color: #438029;
+    background-color: #00332c;
     text-align: center;
     display: flex;
     flex-direction: column;
