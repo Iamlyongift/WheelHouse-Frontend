@@ -28,7 +28,7 @@ html {
   justify-content: space-between; /* Space between brand name and menu */
   align-items: center;
   padding: 20px;
-  background-color: transparent; /* Default transparent */
+  background-color: #00332c; /* Default transparent */
   position: fixed;
   top: 0;
   width: 100%;
@@ -38,7 +38,9 @@ html {
 
 .navbar.scrolled {
   background-color: #00332c; /* Changes color when scrolled */
+  transition: background-color 0.3s ease-in-out;
 }
+
 
 /* Dark overlay on top of the video */
 .overlay {
@@ -171,7 +173,10 @@ html {
     transform: translateY(0); /* Slide down */
     opacity: 1; /* Show */
   }
-
+  .navbar.scrolled {
+    background-color: #00332c; /* Changes color when scrolled */
+  }
+  
 
   
 }

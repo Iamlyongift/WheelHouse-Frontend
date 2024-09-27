@@ -17,20 +17,22 @@ const NavigationBar = () => {
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        // When scrolled down 50px or more
+      console.log(window.scrollY); // Log scroll position for debugging
+      if (window.scrollY > 50) { // Increase threshold to 50 for better visibility
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll);
-
+  
+    // Clean up event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>

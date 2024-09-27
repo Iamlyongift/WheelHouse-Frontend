@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
+// import HouseDetail from "./components/pages/HouseDetail";
 
 
 // Lazy load your components
@@ -18,6 +19,7 @@ const WishList = lazy(() => import("./components/pages/WishList"));
 const CarDetails = lazy(() => import("./components/pages/CarDetails"));
 const Pagination = lazy(() => import("./components/pages/Pagination"));
 const BankDetails = lazy(() => import("./components/pages/BankDetails"));
+const HouseDetail = lazy(() => import("./components/pages/HouseDetail"));
 const ForgottenPassWord = lazy(() =>
   import("./components/pages/ForgottenPassWord")
 );
@@ -41,6 +43,7 @@ function App() {
             <Route path="/cars" element={<Product />} />
             <Route path="/cars/:id" element={<CarDetails />} />
             <Route path="/bankdetails/:id" element={<BankDetails />} />
+            <Route path="/house/:id" element={<HouseDetail />} />
           </Routes>
         </Suspense>
       </div>
