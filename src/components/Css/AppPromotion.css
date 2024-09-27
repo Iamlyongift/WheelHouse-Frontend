@@ -37,6 +37,7 @@
     flex-direction: column;
     gap: 10px;
     justify-content: space-between;
+    color: #fff;
   }
   .text-area{
     width:100%;

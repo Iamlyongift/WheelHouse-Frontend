@@ -4,7 +4,9 @@ import "./Navbar.css";
 import video from "../../assets/video1.mp4";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuFries } from "react-icons/ci";
-// import { useLocation } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
+
+
 
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +40,11 @@ const NavigationBar = () => {
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <Link to="/" className="link-home"><div className="brand-name"><span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span></div></Link>
       <div className="menu-icon" onClick={toggleMenu}>
-        <CiMenuFries size={25} className="toggle"/> {/* Hamburger Icon */}
+        {isMenuOpen ? (
+          <IoClose size={25} className="toggle" /> // Close Icon
+        ) : (
+          <CiMenuFries size={25} className="toggle" /> // Hamburger Icon
+        )}
       </div>
       <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
         <Link id="hove" className="links" to="/about">
@@ -53,8 +59,8 @@ const NavigationBar = () => {
         <Link id="hove" className="links" to="/cars">
           Cars
         </Link>
-        <Link id="hove" className="links" to="/register">
-          Login
+        <Link className="links" to="/register">
+         <button className="login-button"> Login</button>
         </Link>
       </div>
     </nav>

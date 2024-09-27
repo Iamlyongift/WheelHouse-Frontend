@@ -1,7 +1,7 @@
-import imageONe from "../assets/image1.png"
-import imageTWO from "../assets/image4.jpg"
-import imageOne from "../assets/image2.png";
-import imageTHREE from "../assets/image3.png"
+import imageONe from "../assets/bugatti2.jpg"
+import imageTWO from "../assets/Audi.jpg"
+import imageOne from "../assets/Rollsroyce.jpg";
+import imageTHREE from "../assets/Tesla.jpg"
 import imageTwo from "../assets/carOne.jpeg";
 import imageThree from "../assets/b-l-h2-img-1.jpg.jpg";
 

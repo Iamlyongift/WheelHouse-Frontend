@@ -62,7 +62,23 @@ html {
 .nav-links {
   display: flex;
   gap: 20px;
+  transition: all 0.3s ease;
+
 }
+
+/* .nav-links {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+} */
+
 
 .hero {
   position: relative;
@@ -142,6 +158,18 @@ html {
   color: white;
   font-size: 30px;
 }
+.login-button {
+  width: auto;
+  padding:5px;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}  
+.login-button:hover{
+background-color: #f8b400;
+}
+
 
 /* Hide the links on small screens */
 @media (max-width: 768px) {
@@ -165,8 +193,19 @@ html {
     padding: 20px 0;
     opacity: 0;
     transform: translateY(-100%);
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
+
+  .login-button {
+    width: auto;
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+}  
+.login-button:hover{
+  background-color: #f8b400;
+}
 
   .nav-links.open {
     display: flex; /* Display flex on open */
@@ -176,9 +215,6 @@ html {
   .navbar.scrolled {
     background-color: #00332c; /* Changes color when scrolled */
   }
-  
-
-  
 }
 
 /* Hero Section Styling */
