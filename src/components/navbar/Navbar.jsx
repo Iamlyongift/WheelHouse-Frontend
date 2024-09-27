@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./Navbar.css";
 import video from "../../assets/video1.mp4";
 import { Link, useLocation } from "react-router-dom";
+import { CiMenuFries } from "react-icons/ci";
 // import { useLocation } from "react-router-dom";
 
 const NavigationBar = () => {
@@ -35,7 +36,7 @@ const NavigationBar = () => {
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <Link to="/" className="link-home"><div className="brand-name"><span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span></div></Link>
       <div className="menu-icon" onClick={toggleMenu}>
-        &#9776; {/* Hamburger Icon */}
+        <CiMenuFries size={25} className="toggle"/> {/* Hamburger Icon */}
       </div>
       <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
         <Link id="hove" className="links" to="/about">
