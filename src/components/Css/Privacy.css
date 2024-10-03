@@ -1,0 +1,10 @@
+.privacy{
+    margin: 8rem auto;
+}
+
+@media (max-width: 768px){
+    .privacy{
+        text-align: justify;
+        padding: 15px;
+    }
+}
