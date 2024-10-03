@@ -1,26 +1,13 @@
-import { useState } from "react";
 import "../Css/PropertPage.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import houseData from "../../Data/houseData";
-import { FaHeart, FaRegHeart } from "react-icons/fa"; // Import both heart icons
 
 const PropertyPage = () => {
-  const { id } = useParams(); // Get the house ID from URL params
-  const house = houseData.find((house) => house.id === parseInt(id)); // Find the house by ID
-
-  const [wishlist, setWishlist] = useState([]); // State for wishlist
-
-  // Toggle wishlist function
-  const toggleWishlist = (id) => {
-    setWishlist((prevWishlist) =>
-      prevWishlist.includes(id)
-        ? prevWishlist.filter((houseId) => houseId !== id)
-        : [...prevWishlist, id]
-    );
-  };
+  const { id } = useParams();
+  const house = houseData.find((house) => house.id === parseInt(id));
 
   if (!house) {
     return <div>Property not found</div>; // Handle case where house is not found
@@ -29,16 +16,12 @@ const PropertyPage = () => {
   return (
     <div className="property-page">
       <div className="main-content">
-        <ImageSlider house={house} /> {/* Pass house to ImageSlider */}
-        <PropertyDetails
-          house={house}
-          isWishlisted={wishlist.includes(house.id)} // Check if house is wishlisted
-          toggleWishlist={toggleWishlist} // Pass toggle function
-        />
+        <ImageSlider house={house} />
+        <PropertyDetails house={house} />
         <SafetyTips />
       </div>
       <aside>
-        <ContactForm house={house} /> {/* Pass house to ContactForm */}
+        <ContactForm house={house} />
       </aside>
     </div>
   );
@@ -92,20 +75,13 @@ function ContactForm({ house }) {
 }
 
 // PropertyDetails: Receives house and displays its details
-function PropertyDetails({ house, isWishlisted, toggleWishlist }) {
+function PropertyDetails({ house }) {
   return (
     <div className="property-details">
       <div className="divONe">
         <h1>{house.title}</h1>
         <p>{house.description}</p>
         <span className="price">{house.price}</span>
-      </div>
-      <div onClick={() => toggleWishlist(house.id)}> {/* Add click event to toggle wishlist */}
-        {isWishlisted ? (
-          <FaHeart size={25} color="red" /> // Filled heart if wishlisted
-        ) : (
-          <FaRegHeart size={25} /> // Empty heart if not wishlisted
-        )}
       </div>
     </div>
   );

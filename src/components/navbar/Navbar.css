@@ -63,21 +63,9 @@ html {
   display: flex;
   gap: 20px;
   transition: all 0.3s ease;
-
+  justify-content: center;
+  align-items: center;
 }
-
-/* .nav-links {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  transition: all 0.3s ease;
-} */
 
 
 .hero {
@@ -161,6 +149,8 @@ html {
 .login-button {
   width: auto;
   padding:5px;
+  border: none;
+  outline: none;
   border-radius: 10px;
   background-color: transparent;
   color: white;
@@ -198,8 +188,8 @@ background-color: #f8b400;
 
   .login-button {
     width: auto;
-    padding: 0.75rem 2rem;
-    border-radius: 10px;
+    padding: 0.75rem;
+    border-radius: 7px;
     background-color: transparent;
     color: white;
 }  

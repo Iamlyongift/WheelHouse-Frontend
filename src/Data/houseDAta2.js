@@ -25,15 +25,16 @@ const houseData2 = [
     title: "Luxury Apartments",
     bedrooms: 3,
     bathrooms: 5,
-    Price: 800,
+    price: 800,
   },
   {
     id: 3,
     image: housethree,
+    image2: housefour,
     title: "Studio Apartments",
     bedrooms: 3,
     bathrooms: 2,
-    Price: 650,
+    price: 650,
   },
   {
     id: 4,
@@ -41,7 +42,7 @@ const houseData2 = [
     title: "Penthouse",
     bedrooms: 5,
     bathrooms: 4,
-    Price: 1200,
+    price: 1200,
   },
   {
     id: 5,
@@ -49,7 +50,7 @@ const houseData2 = [
     title: "Single Bedroom",
     bedrooms: 1,
     bathrooms: 1,
-    Price: 300,
+    price: 300,
   },
   {
     id: 6,
@@ -57,7 +58,7 @@ const houseData2 = [
     title: "Duplex",
     bedrooms: 4,
     bathrooms: 4,
-    Price: 1000,
+    price: 1000,
   },
   {
     id: 7,
@@ -65,7 +66,7 @@ const houseData2 = [
     title: "Townhouse",
     bedrooms: 3,
     bathrooms: 2,
-    Price: 700,
+    price: 700,
   },
   {
     id: 8,
@@ -73,7 +74,7 @@ const houseData2 = [
     title: "Beach House",
     bedrooms: 3,
     bathrooms: 3,
-    Price: 850,
+    price: 850,
   },
   {
     id: 9,
@@ -81,7 +82,7 @@ const houseData2 = [
     title: "Cottage",
     bedrooms: 2,
     bathrooms: 1,
-    Price: 400,
+    price: 400,
   },
   {
     id: 10,
@@ -89,7 +90,7 @@ const houseData2 = [
     title: "Villa",
     bedrooms: 6,
     bathrooms: 5,
-    Price: 2000,
+    price: 2000,
   },
   // Add more data here as needed
 ];

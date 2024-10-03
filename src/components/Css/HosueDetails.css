@@ -6,6 +6,11 @@
     padding-bottom: 100px; /* Add padding to push content above the footer */
   }
   
+  .detail{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   .main-content {
     width: 70%;
     height: auto;
@@ -88,6 +93,7 @@
   }
   .contact-form button {
     margin-top: 1rem;
+    margin: 10px;
   }
   .contact-form button:hover {
     background-color: #00332c;

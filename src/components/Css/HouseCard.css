@@ -26,6 +26,11 @@
     margin: 10px 0;
     font-size: 1.25rem;
   }
+  .wishlist-icon{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
   
   @media (max-width: 768px){
     .house-card {

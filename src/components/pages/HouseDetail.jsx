@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import houseData from "../../Data/houseDAta2"; // Import your house data
-import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "../Css/HosueDetails.css";
@@ -10,16 +9,6 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 const HouseDetail = () => {
   const { id } = useParams();
   const house = houseData.find((h) => h.id === parseInt(id));
-  const [wishlist, setWishlist] = useState([]); // State for wishlist
-
-  // Toggle wishlist function
-  const toggleWishlist = (id) => {
-    setWishlist((prevWishlist) =>
-      prevWishlist.includes(id)
-        ? prevWishlist.filter((houseId) => houseId !== id)
-        : [...prevWishlist, id]
-    );
-  };
 
   if (!house) {
     return <div>House not found!</div>;
@@ -31,8 +20,7 @@ const HouseDetail = () => {
         <ImageSlider house={house} />
         <PropertyDetails
           house={house}
-          isWishlisted={wishlist.includes(house.id)} // Check if house is wishlisted
-          toggleWishlist={toggleWishlist}
+         
         />
         <SafetyTips />
       </div>
@@ -70,13 +58,22 @@ const HouseDetail = () => {
 
   // ContactForm: Receives house description and uses it in the form
   function ContactForm({ house }) {
+    // Define a message that will be sent to WhatsApp
+    const whatsappMessage = `Hello, I am interested in ${house.title}`;
+    
+    // Replace spaces with URL-encoded spaces (%20) for the WhatsApp link
+    const whatsappLink = `https://wa.me/7043707580?text=${encodeURIComponent(whatsappMessage)}`;
+  
     return (
       <form className="contact-form">
-        <h1>Schedule a visit</h1>
-        <p>
-          Duis aute irure dolor in reprehenderit in vate velit cillum culpa qui
-          officia deserunt mollit anim id est.
-        </p>
+        <div className="detail">
+          <p>Interested in this property?</p>
+          <h1>Schedule a visit</h1>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
         <input type="text" placeholder="Name" />
         <input type="text" placeholder="Phone" />
         <input type="email" placeholder="Email" />
@@ -84,13 +81,20 @@ const HouseDetail = () => {
           placeholder="Message"
           defaultValue={`Hello, I am interested in ${house.title}`}
         ></textarea>
-        <button type="submit">Enquiry</button>
+        <div className="button-group">
+          <button type="submit">Enquiry</button>
+          {/* WhatsApp Button */}
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <button type="button" className="whatsapp-button">WhatsApp</button>
+          </a>
+        </div>
       </form>
     );
   }
+  
 
   // PropertyDetails: Receives house and displays its details
-  function PropertyDetails({ house, isWishlisted, toggleWishlist }) {
+  function PropertyDetails({ house }) {
     return (
       <div className="property-details">
         <div className="divONe">
@@ -98,15 +102,6 @@ const HouseDetail = () => {
           <p>Bedrooms: {house.bedrooms}</p>
           <p>Bathrooms: {house.bathrooms}</p>
           <span className="price">Price: {house.price}</span>
-        </div>
-        <div onClick={() => toggleWishlist(house.id)}>
-          {" "}
-          {/* Add click event to toggle wishlist */}
-          {isWishlisted ? (
-            <FaHeart size={25} color="red" /> // Filled heart if wishlisted
-          ) : (
-            <FaRegHeart size={25} /> // Empty heart if not wishlisted
-          )}
         </div>
       </div>
     );
@@ -133,6 +128,8 @@ function SafetyTips() {
     </div>
   );
 }
+
+
 
 export default HouseDetail;
 

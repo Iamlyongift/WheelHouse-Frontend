@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Css/Product.css";
 import cars from "../../Data/Car"; // Import cars data from the new file
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-console.log(cars); // Check if 'cars' logs as an array
+import { PiGreaterThan } from "react-icons/pi";
+import { FaLessThan } from "react-icons/fa6";
+
 const carsPerPage = 9; // Number of cars to display per page
 
 const CarCard = ({ car, isWishlisted, toggleWishlist }) => {
@@ -31,7 +34,6 @@ const CarCard = ({ car, isWishlisted, toggleWishlist }) => {
           </Link>
           <p>
             <span>{car.stocks} stocks</span> | <span>{car.Category}</span> |{" "}
-           
           </p>
         </div>
       </div>
@@ -42,6 +44,7 @@ const CarCard = ({ car, isWishlisted, toggleWishlist }) => {
 const Product = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [wishlist, setWishlist] = useState([]);
+  const navigate = useNavigate();
 
   // Calculate total pages
   const totalPages = Math.ceil(cars.length / carsPerPage);
@@ -59,6 +62,17 @@ const Product = () => {
 
   // Toggle wishlist function
   const toggleWishlist = (id) => {
+    const token = localStorage.getItem("token"); // Check for authentication token
+    console.log("Token:", token); // Debug to see if token is correctly retrieved
+
+    if (!token) {
+      // If user is not logged in, redirect to login or show an alert
+      alert("You need to be logged in to add items to the wishlist.");
+      navigate("/login"); // Redirect to login page
+      return;
+    }
+
+    // If user is authenticated, proceed with adding/removing from wishlist
     setWishlist((prevWishlist) =>
       prevWishlist.includes(id)
         ? prevWishlist.filter((carId) => carId !== id)
@@ -93,7 +107,7 @@ const Product = () => {
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          &laquo; Prev
+          <FaLessThan />
         </button>
 
         {Array.from({ length: totalPages }, (_, index) => (
@@ -110,7 +124,7 @@ const Product = () => {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next &raquo;
+          <PiGreaterThan />
         </button>
       </div>
     </div>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 import video from "../../assets/video1.mp4";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 
@@ -11,6 +11,20 @@ import { IoClose } from "react-icons/io5";
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // Set to true if token exists, false otherwise
+  }, []);
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token from localStorage
+    setIsLoggedIn(false); // Update state
+    navigate("/login"); // Navigate to login page
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,53 +33,49 @@ const NavigationBar = () => {
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY); // Log scroll position for debugging
-      if (window.scrollY > 50) { // Increase threshold to 50 for better visibility
+      if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     // Clean up event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <Link to="/" className="link-home"><div className="brand-name"><span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span></div></Link>
+      <Link to="/" className="link-home">
+        <div className="brand-name">
+          <span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span>
+        </div>
+      </Link>
       <div className="menu-icon" onClick={toggleMenu}>
-        {isMenuOpen ? (
-          <IoClose size={25} className="toggle" /> // Close Icon
-        ) : (
-          <CiMenuFries size={25} className="toggle" /> // Hamburger Icon
-        )}
+        {isMenuOpen ? <IoClose size={25} className="toggle" /> : <CiMenuFries size={25} className="toggle" />}
       </div>
       <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-        <Link id="hove" className="links" to="/about">
-          About
-        </Link>
-        <Link id="hove" className="links" to="/contact">
-          Contact
-        </Link>
-        <Link id="hove" className="links" to="/paginations">
-          Houses
-        </Link>
-        <Link id="hove" className="links" to="/cars">
-          Cars
-        </Link>
-        <Link className="links" to="/register">
-         <button className="login-button"> Login</button>
-        </Link>
+        <Link id="hove" className="links" to="/about">About</Link>
+        <Link id="hove" className="links" to="/contact">Contact</Link>
+        <Link id="hove" className="links" to="/paginations">Houses</Link>
+        <Link id="hove" className="links" to="/cars">Cars</Link>
+        {isLoggedIn ? (
+          <button className="login-button" onClick={handleLogout}>Logout</button>
+        ) : (
+          <Link className="links" to="/login">
+            <button className="login-button">Login</button>
+          </Link>
+        )}
       </div>
     </nav>
   );
 };
+
+
 
 const HeroSection = () => {
   return (

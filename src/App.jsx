@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
-// import HouseDetail from "./components/pages/HouseDetail";
-
+import PrivateRoute from "./components/pages/PrivateRoute";
+import PublicRoute from "./components/pages/PublicRoute";
 
 // Lazy load your components
 const About = lazy(() => import("./components/pages/About"));
@@ -18,8 +18,9 @@ const ProfilePage = lazy(() => import("./components/pages/ProfilePage"));
 const WishList = lazy(() => import("./components/pages/WishList"));
 const CarDetails = lazy(() => import("./components/pages/CarDetails"));
 const Pagination = lazy(() => import("./components/pages/Pagination"));
-const BankDetails = lazy(() => import("./components/pages/BankDetails"));
+const Privacy = lazy(() => import("./components/pages/Privacy"));
 const HouseDetail = lazy(() => import("./components/pages/HouseDetail"));
+const FAQPage = lazy(() => import("./components/pages/FAQPage"));
 const ForgottenPassWord = lazy(() =>
   import("./components/pages/ForgottenPassWord")
 );
@@ -31,19 +32,78 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/propertypage/:id" element={<PropertyPage />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/propertypage/:id"
+              element={
+                <PrivateRoute>
+                  <PropertyPage />
+                </PrivateRoute>
+              }
+            />
+           
+            <Route path="/register" element={ <PublicRoute><Register /></PublicRoute>} />
+            <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/my-account" element={<ProfilePage />} />
-            <Route path="/forgotpassword" element={<ForgottenPassWord />} />
-            <Route path="/wishlist" element={<WishList />} />
-            <Route path="/paginations" element={<Pagination />} />
-            <Route path="/cars" element={<Product />} />
-            <Route path="/cars/:id" element={<CarDetails />} />
-            <Route path="/bankdetails/:id" element={<BankDetails />} />
-            <Route path="/house/:id" element={<HouseDetail />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route
+              path="/my-account"
+              element={
+                <PrivateRoute>
+                  <ProfilePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/forgotpassword"
+              element={
+                <PrivateRoute>
+                  <ForgottenPassWord />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/wishlist"
+              element={
+                <PrivateRoute>
+                  <WishList />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/paginations"
+              element={
+                <PrivateRoute>
+                  <Pagination />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cars"
+              element={
+                <PrivateRoute>
+                  <Product />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cars/:id"
+              element={
+                <PrivateRoute>
+                  <CarDetails />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/house/:id"
+              element={
+                <PrivateRoute>
+                  <HouseDetail />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Suspense>
       </div>
