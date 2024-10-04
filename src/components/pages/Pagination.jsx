@@ -23,19 +23,20 @@ const Pagination = () => {
 
   return (
     <div className="pagination-container">
-       <h2 className="page-title">Explore Our <span>Luxury Apartments</span></h2>
+      <h2 className="page-title">
+        Explore Our <span>Luxury Apartments</span>
+      </h2>
       <div className="house-cards">
         {currentHouses.map((house) => (
-          
           <HouseCard
             key={house.id}
+            id={house.id}  // Make sure to pass the id here
             image={house.image}
-            title={ <Link to={`/house/${house.id}`}>{house.title}</Link>}
+            title={<Link to={`/house/${house.id}`}>{house.title}</Link>}
             bedrooms={house.bedrooms}
             bathrooms={house.bathrooms}
             price={house.price}
           />
-          
         ))}
       </div>
 

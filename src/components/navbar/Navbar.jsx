@@ -1,12 +1,9 @@
-// import React from 'react';
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 import video from "../../assets/video1.mp4";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
-
-
 
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +21,15 @@ const NavigationBar = () => {
     localStorage.removeItem("token"); // Remove token from localStorage
     setIsLoggedIn(false); // Update state
     navigate("/login"); // Navigate to login page
+    setIsMenuOpen(false); // Close the menu after logout
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   // Add scroll event listener
@@ -50,23 +52,61 @@ const NavigationBar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <Link to="/" className="link-home">
+      <Link to="/" className="link-home" onClick={closeMenu}>
         <div className="brand-name">
-          <span className="spanTWO">CRIBS</span>&<span className="spanTWO">RIDE</span>
+          <span className="spanTWO">CRIBS</span>&
+          <span className="spanTWO">RIDE</span>
         </div>
       </Link>
       <div className="menu-icon" onClick={toggleMenu}>
-        {isMenuOpen ? <IoClose size={25} className="toggle" /> : <CiMenuFries size={25} className="toggle" />}
+        {isMenuOpen ? (
+          <IoClose size={25} className="toggle" />
+        ) : (
+          <CiMenuFries size={25} className="toggle" />
+        )}
       </div>
       <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-        <Link id="hove" className="links" to="/about">About</Link>
-        <Link id="hove" className="links" to="/contact">Contact</Link>
-        <Link id="hove" className="links" to="/paginations">Houses</Link>
-        <Link id="hove" className="links" to="/cars">Cars</Link>
+        <Link id="hove" className="links" to="/about" onClick={closeMenu}>
+          About
+        </Link>
+        <Link id="hove" className="links" to="/contact" onClick={closeMenu}>
+          Contact
+        </Link>
+        <Link id="hove" className="links" to="/paginations" onClick={closeMenu}>
+          Houses
+        </Link>
+        <Link id="hove" className="links" to="/cars" onClick={closeMenu}>
+          Cars
+        </Link>
+
+        {/* Conditionally render Dashboard and Wishlist links for authenticated users */}
+        {isLoggedIn && (
+          <>
+            <Link
+              id="hove"
+              className="links"
+              to="/my-account"
+              onClick={closeMenu}
+            >
+              Dashboard
+            </Link>
+            <Link
+              id="hove"
+              className="links"
+              to="/wishlist"
+              onClick={closeMenu}
+            >
+              Wishlist
+            </Link>
+          </>
+        )}
+
         {isLoggedIn ? (
-          <button className="login-button" onClick={handleLogout}>Logout</button>
+          <button className="login-button" onClick={handleLogout}>
+            Logout
+          </button>
         ) : (
-          <Link className="links" to="/login">
+          <Link className="links" to="/login" onClick={closeMenu}>
             <button className="login-button">Login</button>
           </Link>
         )}
@@ -74,8 +114,6 @@ const NavigationBar = () => {
     </nav>
   );
 };
-
-
 
 const HeroSection = () => {
   return (
@@ -89,8 +127,11 @@ const HeroSection = () => {
         <h1>
           Premium <span>Luxury</span>
         </h1>
-        <p>You can Purchase any of our luxurious <span className="spanTWO">cars</span> & <span className="spanTWO">houses</span>.</p>
-        
+        <p>
+          You can Purchase any of our luxurious{" "}
+          <span className="spanTWO">cars</span> &{" "}
+          <span className="spanTWO">houses</span>.
+        </p>
       </div>
     </div>
   );
