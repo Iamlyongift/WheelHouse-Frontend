@@ -1,0 +1,151 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.section-title span {
+  color: #f78e1e; /* Accent color */
+}
+
+/* Process cards */
+.process-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+ 
+}
+
+.process-card:hover {
+  transform: translateY(-10px);
+  background-color: #cc90506d;
+}
+
+.process-card {
+  background-color: #00332c;
+  padding: 40px 30px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.step-number {
+  font-size: 2.0rem;
+  color: #f78e1e;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+}
+
+.process-card h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Info note */
+.process-note {
+  margin-bottom: 30px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.process-note .info-icon {
+  color: #f78e1e;
+  margin-right: 5px;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .process-cards {
+    flex-direction: column;
+    gap: 40px; /* Increase gap for vertical stacking */
+  }
+
+  .process-card {
+    width: 100%; /* Make each card full width */
+    padding: 30px;
+  }
+
+  .step-number {
+    font-size: 2rem; /* Adjust step number size */
+    top: -5px;
+    left: 15px;
+  }
+
+  .process-card h3 {
+    font-size: 1.4rem; /* Adjust heading size */
+  }
+
+  .process-card p {
+    font-size: 0.95rem; /* Adjust paragraph size */
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem; /* Adjust title size */
+  }
+
+  .process-card {
+    padding: 25px;
+  }
+
+  .step-number {
+    font-size: 1.8rem; /* Adjust step number size */
+  }
+
+  .process-card h3 {
+    font-size: 1.3rem; /* Adjust heading size */
+  }
+
+  .process-card p {
+    font-size: 0.9rem; /* Adjust paragraph size */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 15px;
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Smaller screen title size */
+  }
+
+  .process-card {
+    padding: 20px;
+  }
+
+  .step-number {
+    font-size: 1.5rem; /* Further reduce step number size */
+    top: -5px;
+    left: 10px;
+  }
+
+  .process-card h3 {
+    font-size: 1.2rem; /* Adjust heading size */
+  }
+
+  .process-card p {
+    font-size: 0.85rem; /* Adjust paragraph size */
+  }
+
+  .process-note {
+    font-size: 0.8rem; /* Adjust the note size */
+  }
+}
