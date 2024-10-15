@@ -5,7 +5,6 @@ import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
 import PrivateRoute from "./components/pages/PrivateRoute";
 import PublicRoute from "./components/pages/PublicRoute";
-// import HouseDetails from "./components/pages/HouseDetail";
 
 // Lazy load your components
 const About = lazy(() => import("./components/pages/About"));
