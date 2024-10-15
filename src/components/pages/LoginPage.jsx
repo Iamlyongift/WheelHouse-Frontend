@@ -25,15 +25,15 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const baseUrl = "https://wheelhouse.onrender.com";
+    const baseURL = "http://localhost:2025";
     // POST request to login endpoint
     try {
-      const response = await fetch(`${baseUrl}/users/login`, {
+      const response = await fetch(`${baseURL}/users/login`, {
         method: "POST",
+        credentials: "include", 
         headers: {
           "Content-Type": "application/json",
         },
-         credentials: 'include',
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,

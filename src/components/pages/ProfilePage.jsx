@@ -9,8 +9,11 @@ const ProfilePage = () => {
     email: "",
     phone_number: "",
     country: "",
+    profilePhoto: "",
+    
   });
 
+  const [newProfilePhoto, setNewProfilePhoto] = useState(null); 
   const [passwords, setPasswords] = useState({
     currentPassword: "",
     newPassword: "",
@@ -32,9 +35,9 @@ const ProfilePage = () => {
 
         // Fetch user info from backend using userId
         const fetchUserInfo = async () => {
-          const baseUrl = "https://wheelhouse.onrender.com"; // Your base URL
+          const baseURL = "https://wheelhouse.onrender.com";
           try {
-            const response = await fetch(`${baseUrl}/users/profile/${userId}`, {
+            const response = await fetch(`${baseURL}/users/profile/${userId}`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -48,11 +51,16 @@ const ProfilePage = () => {
 
               // Set the fetched user information into state
               setUserInfo({
-                username: data.username || "",
-                email: data.email || "",
-                phone_number: data.phone_number || "",
-                country: data.country || "",
+                username: data.user.username || "", // Accessing username correctly
+                email: data.user.email || "", // Accessing email correctly
+                phone_number: data.user.phoneNumber || "", // Use phoneNumber instead of phone_number
+                country: data.user.country || "", // Ensure country is available in data
+                profilePhoto: data.user.profilePhoto || "",
+
+                
               });
+
+              
 
               // Enable editing after data is fetched
               setIsEditable(true);
@@ -101,29 +109,37 @@ const ProfilePage = () => {
   // Update account details
   const updateAccount = async () => {
     const token = localStorage.getItem("token");
-
+  
     if (!token) {
       navigate("/login");
       return;
     }
-    const baseUrl = "https://wheelhouse.onrender.com";
+  
+    const baseURL = "https://wheelhouse.onrender.com";
+  
     try {
-      const response = await fetch(`${baseUrl}/users/update_profile`, {
+      // Create a FormData object to hold the form fields and file
+      const formData = new FormData();
+      formData.append("username", userInfo.username);
+      formData.append("email", userInfo.email);
+      formData.append("phone_number", userInfo.phone_number);
+      formData.append("country", userInfo.country);
+  
+      if (newProfilePhoto) {
+        formData.append("profilePhoto", newProfilePhoto); // Append the new profile photo file
+      }
+  
+      // Make the PUT request to update the user profile
+      const response = await fetch(`${baseURL}/users/update_profile`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
-        body: JSON.stringify({
-          username: userInfo.username,
-          email: userInfo.email, // Include email if you want to update
-          phone_number: userInfo.phone_number, // Include phone number if you want to update
-          country: userInfo.country, // Include country if you want to update
-        }),
+        body: formData, // Send the FormData object
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         console.log("Profile updated successfully", data);
       } else {
@@ -135,6 +151,13 @@ const ProfilePage = () => {
       setError("An error occurred. Please try again.");
     }
   };
+  
+
+   // Handle file change for profile photo
+   const handleFileChange = (e) => {
+    setNewProfilePhoto(e.target.files[0]); // Set the new profile photo
+  };
+
 
   return (
     <div className="container">
@@ -142,11 +165,12 @@ const ProfilePage = () => {
         {/* Sidebar */}
         <div className="sidebar">
           <div className="profile-section">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="profile"
+          <img
+              src={userInfo.profilePhoto ? userInfo.profilePhoto : "default-image-path.jpg"}
+              alt={userInfo.username}
               className="profile-img"
             />
+
             <h3>{userInfo.username}</h3>
             <p>{userInfo.email}</p>
             <ul className="nav-list">
@@ -202,17 +226,16 @@ const ProfilePage = () => {
                 onChange={handleInputChange}
                 disabled={!isEditable} // Disable input if isEditable is false
               />
-              <select
+
+              <input
+                type="text"
                 className="input-field"
+                placeholder="country"
                 name="country"
                 value={userInfo.country}
                 onChange={handleInputChange}
                 disabled={!isEditable} // Disable input if isEditable is false
-              >
-                <option value="">Choose Country/Region</option>
-                <option value="region1">Region 1</option>
-                <option value="region2">Region 2</option>
-              </select>
+              />
             </div>
 
             <h3 className="mt-5">Change Password</h3>
@@ -245,6 +268,16 @@ const ProfilePage = () => {
               />
             </div>
 
+            <div className="input-row">
+              <label>Update Profile Picture</label>
+              <input
+                type="file"
+                name="profilePhoto"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+            </div>
+
             <button
               type="button"
               className="btn-submit"
@@ -260,3 +293,19 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

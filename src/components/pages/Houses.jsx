@@ -24,7 +24,7 @@ const House = () => {
   // Fetch house data without authentication
   useEffect(() => {
     const fetchHouses = async () => {
-      const baseURL = "http://localhost:2025";
+      const baseURL = "https://wheelhouse.onrender.com";
 
       try {
         const response = await fetch(`${baseURL}/product/houses`, {

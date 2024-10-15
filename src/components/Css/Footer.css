@@ -98,6 +98,11 @@
     height: 20px;
     filter: brightness(0) invert(1); /* Makes logos white */
   }
+
+  ul li{
+    list-style-type: none;
+    padding: 3px;
+  }
   
   @media (max-width: 768px) {
     .footer-content {

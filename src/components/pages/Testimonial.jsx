@@ -1,38 +1,88 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../Css/Testimonials.css";
 
-const reviews = [
-  { id: 1, author: "Elizabeth A.", date: "August 13, 2024", rating: 5, title: "Quality Of Clothing!", content: "Anvouge's fashion collection is a game-changer! Their unique and trendy pieces have completely transformed my style. It's comfortable, stylish, and always on-trend." },
-  { id: 2, author: "Christin H.", date: "August 13, 2024", rating: 5, title: "Customer Service!", content: "I absolutely love this shop! The products are high-quality and the customer service is excellent. I always leave with exactly what I need and a smile on my face." },
-  { id: 3, author: "Emily G.", date: "August 13, 2024", rating: 5, title: "Quality Of Clothing!", content: "I can't get enough of Anvouge's high-quality clothing. It's comfortable, stylish, and always on-trend. The products are high-quality and the customer service is excellent." },
-  { id: 4, author: "John D.", date: "August 14, 2024", rating: 5, title: "Exceptional Quality!", content: "The quality of the products exceeded my expectations. I'm very happy with my purchase and will definitely be coming back for more." },
-  { id: 5, author: "Sarah W.", date: "August 15, 2024", rating: 5, title: "Great Shopping Experience!", content: "The online shopping experience was smooth and the delivery was fast. I highly recommend this store for everyone looking for quality fashion." },
-  { id: 6, author: "Mike T.", date: "August 16, 2024", rating: 5, title: "Loved It!", content: "Absolutely in love with the collection. The designs are trendy and the quality is top-notch. Will definitely recommend to friends." },
-  { id: 7, author: "Lucy K.", date: "August 17, 2024", rating: 5, title: "Fantastic!", content: "Amazing products and fantastic customer service. I'm very satisfied with my purchase." },
-];
-
 const Testimonial = () => {
+  const [reviews, setReviews] = useState([]); // State to store fetched reviews
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
   const sliderRef = useRef(null);
   const autoSlideInterval = 3000; // Set interval time in milliseconds
+  const reviewsPerSlide = 6; // Number of reviews to show at a time
+
+  useEffect(() => {
+    // Function to fetch reviews
+    const fetchReviews = async () => {
+      try {
+        // Assuming the token is stored in localStorage after login
+        const token = localStorage.getItem("token");
+
+        // Set loading to true before fetching
+        setLoading(true);
+        const baseURL = "https://wheelhouse.onrender.com";
+        const response = await fetch(`${baseURL}/users/testimonials`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include token in Authorization header
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch reviews"); // Handle non-2xx responses
+        }
+
+        const data = await response.json(); // Parse the JSON response
+        setReviews(data); // Update state with fetched reviews
+        setLoading(false); // Set loading to false after fetching
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+        setError("Failed to load reviews");
+        setLoading(false);
+      }
+    };
+
+    // Fetch reviews after component mounts
+    fetchReviews();
+  }, []);
 
   useEffect(() => {
     const slider = sliderRef.current;
+    if (!slider || reviews.length === 0) return;
+
     let startIndex = 0;
+    const cardWidth = slider.scrollWidth / reviews.length; // Width of one card
+    const maxIndex = Math.max(0, reviews.length - reviewsPerSlide); // Maximum start index
 
     const slide = () => {
-      if (startIndex >= reviews.length - 6) { // Adjust to display 6 cards at a time
-        startIndex = 0; // Reset to start when reaching the end
+      if (startIndex >= maxIndex) {
+        // Reset when reaching the end
+        startIndex = 0;
       } else {
         startIndex++;
       }
-      slider.scrollLeft = startIndex * (slider.scrollWidth / reviews.length);
+
+      // Scroll to the next set of reviews
+      slider.scrollTo({
+        left: startIndex * cardWidth * reviewsPerSlide,
+        behavior: "smooth", // Smooth scrolling for better UX
+      });
     };
 
     const interval = setInterval(slide, autoSlideInterval);
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [reviews]);
+
+  // Handle loading state
+  if (loading) {
+    return <p>Loading reviews...</p>;
+  }
+
+  // Handle error state
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <section className="reviews-section">
@@ -43,10 +93,12 @@ const Testimonial = () => {
             <div className="review-rating">
               {"★".repeat(review.rating)} {/* Display stars based on rating */}
             </div>
-            <h3 className="review-title">{review.title}</h3>
-            <p className="review-content">{review.content}</p>
-            <p className="review-author">{review.author}</p>
-            <p className="review-date">{review.date}</p>
+            <h3 className="review-title">{review.review}</h3>
+            <p className="review-content">{review.description}</p>
+            <p className="review-author">{review.name}</p>
+            <p className="review-date">
+              {new Date(review.date).toLocaleDateString()}
+            </p>
           </div>
         ))}
       </div>

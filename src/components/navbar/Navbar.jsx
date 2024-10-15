@@ -72,7 +72,10 @@ const NavigationBar = () => {
         <Link id="hove" className="links" to="/contact" onClick={closeMenu}>
           Contact
         </Link>
-        <Link id="hove" className="links" to="/paginations" onClick={closeMenu}>
+        <Link id="hove" className="links" to="/testimonials" onClick={closeMenu}>
+          Testimonials
+        </Link>
+        <Link id="hove" className="links" to="/houses" onClick={closeMenu}>
           Houses
         </Link>
         <Link id="hove" className="links" to="/cars" onClick={closeMenu}>
@@ -88,7 +91,7 @@ const NavigationBar = () => {
               to="/my-account"
               onClick={closeMenu}
             >
-              Dashboard
+              Profile
             </Link>
             <Link
               id="hove"

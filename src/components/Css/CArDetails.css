@@ -25,32 +25,6 @@ aside {
   width: 25%;
 }
 
-.property-details {
-  width: 80%;
-  margin-block: 20px;
-  height: auto;
-  border-bottom: 4px solid #000;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.property-details .divONe {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.divONe h1 {
-  text-decoration: underline;
-  color: #00332c;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .featured-badge {
   background: 00332c;
   color: white;
@@ -100,6 +74,7 @@ aside {
   background-color: #00332c;
   color: #fff;
 }
+
 /* Style for the entire slider container */
 .slick-slider {
   width: 80%; /* Adjust width as needed */
@@ -145,6 +120,56 @@ aside {
   font-size: small;
   text-align-last: left;
 }
+
+/* PropertyDetails */
+.car-details-container {
+  background-color: #f9f9f9;
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px ;
+  padding: 20px; 
+  margin-bottom: 20px; 
+  width: 80%;
+  margin: 0 auto; 
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.car-info h2 {
+  font-size: 24px; 
+  font-weight: 600; 
+  color: #333; 
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee; 
+  padding-bottom: 5px;
+}
+
+.car-info p {
+  font-size: 16px; /* Standard font size for details */
+  color: #555; /* Slightly lighter text color */
+  margin: 5px 0; /* Minimal margin for paragraphs */
+}
+
+.car-info p span {
+  font-weight: 500; /* Emphasize labels like Category, Price, etc. */
+  color: #000; /* Darker color for better contrast */
+}
+
+.car-info p.price {
+  font-size: 18px; /* Larger font size for the price */
+  color: #27ae60; /* Green color for price to stand out */
+  font-weight: 700; /* Bold the price */
+}
+
+.car-info p.stock {
+  font-size: 14px;
+  color: #e74c3c; /* Red color for stock, indicating critical information */
+  font-weight: 600;
+}
+
 
 @media (max-width: 768px) {
   .property-page {

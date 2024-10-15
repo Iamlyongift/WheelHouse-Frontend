@@ -19,11 +19,11 @@ const Footer = () => {
           <h3>Information</h3>
           <ul>
             <Link to="/about">
-              {" "}
+            
               <li>Contact us</li>
             </Link>
             <Link to="/my-account">
-              {" "}
+          
               <li>My account</li>
             </Link>
           </ul>

@@ -5,6 +5,7 @@ import Footer from "./components/pages/Footer";
 import Loader from "./components/Loader/Loader";
 import PrivateRoute from "./components/pages/PrivateRoute";
 import PublicRoute from "./components/pages/PublicRoute";
+// import HouseDetails from "./components/pages/HouseDetail";
 
 // Lazy load your components
 const About = lazy(() => import("./components/pages/About"));
@@ -13,14 +14,14 @@ const Contact = lazy(() => import("./components/pages/Contact"));
 const Home = lazy(() => import("./components/Home/Home"));
 const Register = lazy(() => import("./components/pages/Register"));
 const LoginPage = lazy(() => import("./components/pages/LoginPage"));
-const PropertyPage = lazy(() => import("./components/pages/PropertyPage"));
 const ProfilePage = lazy(() => import("./components/pages/ProfilePage"));
 const WishList = lazy(() => import("./components/pages/WishList"));
 const CarDetails = lazy(() => import("./components/pages/CarDetails"));
-const Pagination = lazy(() => import("./components/pages/Pagination"));
+const Houses = lazy(() => import("./components/pages/Houses"));
 const Privacy = lazy(() => import("./components/pages/Privacy"));
-const HouseDetail = lazy(() => import("./components/pages/HouseDetail"));
+const HouseDetails = lazy(() => import("./components/pages/HouseDetail"));
 const FAQPage = lazy(() => import("./components/pages/FAQPage"));
+const Testimonials = lazy(() => import("./components/pages/Testimonials"));
 const ForgottenPassWord = lazy(() =>
   import("./components/pages/ForgottenPassWord")
 );
@@ -32,19 +33,26 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route
-              path="/propertypage/:id"
+              path="/register"
               element={
-                <PrivateRoute>
-                  <PropertyPage />
-                </PrivateRoute>
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
               }
             />
-           
-            <Route path="/register" element={ <PublicRoute><Register /></PublicRoute>} />
-            <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route
@@ -71,39 +79,10 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/paginations"
-              element={
-                <PrivateRoute>
-                  <Pagination />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/cars"
-              element={
-                <PrivateRoute>
-                  <Product />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/cars/:id"
-              element={
-                <PrivateRoute>
-                  <CarDetails />
-                </PrivateRoute>
-              }
-            />
-
-            <Route
-              path="/house/:id"
-              element={
-                <PrivateRoute>
-                  <HouseDetail />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/houses" element={<Houses />} />
+            <Route path="/houses/:id" element={<HouseDetails />} />
+            <Route path="/cars" element={<Product />} />
+            <Route path="/cars/:id" element={<CarDetails />} />
           </Routes>
         </Suspense>
       </div>

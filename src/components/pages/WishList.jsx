@@ -7,13 +7,13 @@ const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    // Fetch wishlist from localStorage or a server API
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    console.log(storedWishlist); // Add this line to check your wishlist data
     setWishlist(storedWishlist);
   }, []);
 
   const removeFromWishlist = (id) => {
-    const updatedWishlist = wishlist.filter(item => item.id !== id);
+    const updatedWishlist = wishlist.filter((item) => item.id !== id);
     setWishlist(updatedWishlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
@@ -27,7 +27,7 @@ const Wishlist = () => {
         <div className="wishlist-grid">
           {wishlist.map((item) => (
             <div key={item.id} className="wishlist-item">
-              <img src={item.image} alt={item.title} />
+              <img src={item.images[0]} alt={item.title} />
               <div className="wishlist-item-details">
                 <h3>{item.title}</h3>
                 <p>Price: {item.price}</p>

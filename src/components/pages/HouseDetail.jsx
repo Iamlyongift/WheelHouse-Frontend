@@ -1,112 +1,110 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import houseData from "../../Data/houseDAta2"; // Import your house data
+import "../Css/HouseDetails.css"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import "../Css/HosueDetails.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const HouseDetail = () => {
-  const { id } = useParams();
-  const house = houseData.find((h) => h.id === parseInt(id));
+const HouseDetails = () => {
+  const { id } = useParams(); // Get house ID from the URL
+  const [house, setHouse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!house) {
-    return <div>House not found!</div>;
-  }
+  useEffect(() => {
+    const fetchHouseDetails = async () => {
+      const baseURL = "http://localhost:2025"; // Your backend URL
+      const token = localStorage.getItem("token");
+
+      try {
+        if (!token) {
+          throw new Error("No token found, please log in.");
+        }
+
+        const response = await fetch(
+          `${baseURL}/product/getSingleProduct/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch house details.");
+        }
+
+        const data = await response.json();
+        setHouse(data.product); 
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchHouseDetails();
+  }, [id]);
+
+  if (loading) return <p>Loading house details...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <div className="property-page">
       <div className="main-content">
-        <ImageSlider house={house} />
-        <PropertyDetails
-          house={house}
-         
-        />
+        {/* Ensure house and house.images are available before rendering */}
+        {house && house.images && house.images.length > 0 ? (
+          <Slider {...sliderSettings} className="slick-slider">
+            {house.images.map((image, index) => (
+              <div key={index}>
+                <img
+                  src={image}
+                  alt={`House ${index + 1}`}
+                  className="house-image"
+                />
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <p>No images available or house details found.</p>
+        )}
+        {/* House Details */}
+        <PropertyDetails house={house} />
         <SafetyTips />
       </div>
       <aside>
-          <ContactForm house={house} /> {/* Pass house to ContactForm */}
-        </aside>
+        <ContactForm house={house} />
+      </aside>
     </div>
   );
-
-  // ImageSlider: Receives the house prop and uses the house images
-  function ImageSlider({ house }) {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    };
-
-    return (
-      <Slider {...settings}>
-        <div>
-          <img src={house.image} alt="property image 1" />
-        </div>
-        {/* You can add additional images dynamically from the house object, or replace with static ones */}
-        <div>
-          <img src={house.image2 || house.image} alt="property image 2" />
-        </div>
-        <div>
-          <img src={house.image3 || house.image} alt="property image 3" />
-        </div>
-      </Slider>
-    );
-  }
-
-  // ContactForm: Receives house description and uses it in the form
-  function ContactForm({ house }) {
-    // Define a message that will be sent to WhatsApp
-    const whatsappMessage = `Hello, I am interested in ${house.title}`;
-    
-    // Replace spaces with URL-encoded spaces (%20) for the WhatsApp link
-    const whatsappLink = `https://wa.me/7043707580?text=${encodeURIComponent(whatsappMessage)}`;
-  
-    return (
-      <form className="contact-form">
-        <div className="detail">
-          <p>Interested in this property?</p>
-          <h1>Schedule a visit</h1>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur.
-          </p>
-        </div>
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Phone" />
-        <input type="email" placeholder="Email" />
-        <textarea
-          placeholder="Message"
-          defaultValue={`Hello, I am interested in ${house.title}`}
-        ></textarea>
-        <div className="button-group">
-          <button type="submit">Enquiry</button>
-          {/* WhatsApp Button */}
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-            <button type="button" className="whatsapp-button">WhatsApp</button>
-          </a>
-        </div>
-      </form>
-    );
-  }
-  
-
-  // PropertyDetails: Receives house and displays its details
-  function PropertyDetails({ house }) {
-    return (
-      <div className="property-details">
-        <div className="divONe">
-          <h1>{house.title}</h1>
-          <p>Bedrooms: {house.bedrooms}</p>
-          <p>Bathrooms: {house.bathrooms}</p>
-          <span className="price">Price: {house.price}</span>
-        </div>
-      </div>
-    );
-  }
 };
+
+// Component to display house details
+const PropertyDetails = ({ house }) => {
+  return (
+    <section className="house-details-container">
+      <div className="house-info">
+        <h2>{house.productName}</h2> {/* House name/title */}
+        {/* <p><span>Category:</span> {house.category}</p>  */}
+        <p className="price"><span>Price:</span> ${house.price}</p> {/* Price with special styling */}
+        <p><span>Description:</span> {house.description}</p> {/* Description of the house */}
+        <p className="stock"><span>Stock:</span> {house.stock}</p> {/* Stock with red color styling */}
+      </div>
+    </section>
+  );
+};
+
+// Component to display safety tips
 function SafetyTips() {
   return (
     <div className="safety-container">
@@ -116,8 +114,8 @@ function SafetyTips() {
           Do not make any inspection fee without seeing the agent and property.
         </li>
         <li>
-          Only pay Rental fee, Sales fee or any upfront payment after you verify
-          the Landlord.
+          Only pay Rental fee, Sales fee, or any upfront payment after you
+          verify the Landlord.
         </li>
         <li>Ensure you meet the Agent in an open location.</li>
         <li>
@@ -129,14 +127,106 @@ function SafetyTips() {
   );
 }
 
+// Contact Form component
+function ContactForm({ house }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: `Hello, I am interested in ${house.productName}`, // Make sure the house's name exists
+  });
 
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-export default HouseDetail;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-{
-  /* <h1>{house.title}</h1>
-<img src={house.image} alt={house.title} />
-<p>Bedrooms: {house.bedrooms}</p>
-<p>Bathrooms: {house.bathrooms}</p>
-<p>Area: {house.area} sqft</p> */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`http://localhost:2025/users/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setSuccessMessage(result.message);
+        setErrorMessage("");
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || "Failed to submit the form");
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      setErrorMessage("Error submitting the form, please try again later");
+      setSuccessMessage("");
+    }
+  };
+
+  const whatsappMessage = `Hello, I am interested in ${house.productName}`;
+  const whatsappLink = `https://wa.me/7043707580?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="detail">
+        <p>Interested in this House?</p>
+        <h1>Schedule an inspection</h1>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur.
+        </p>
+      </div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={formData.name}
+        onChange={handleInputChange}
+      />
+      <input
+        type="text"
+        name="phone"
+        placeholder="Phone"
+        value={formData.phone}
+        onChange={handleInputChange}
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleInputChange}
+      />
+      <textarea
+        name="message"
+        placeholder="Message"
+        value={formData.message}
+        onChange={handleInputChange}
+      ></textarea>
+      <div className="button-group">
+        <button type="submit">Enquiry</button>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+          <button type="button" className="whatsapp-button">
+            WhatsApp
+          </button>
+        </a>
+      </div>
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    </form>
+  );
 }
+
+export default HouseDetails;
