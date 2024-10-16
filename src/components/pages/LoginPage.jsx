@@ -25,12 +25,12 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const baseURL = "http://localhost:2025";
+    const baseURL = "https://wheelhouse.onrender.com";
     // POST request to login endpoint
     try {
       const response = await fetch(`${baseURL}/users/login`, {
         method: "POST",
-        credentials: "include", 
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -93,9 +93,6 @@ const LoginPage = () => {
               <label>
                 <input type="checkbox" /> Remember
               </label>
-              <Link to="/forgotpassword" className="forgot-password">
-                Forgot Your Password?
-              </Link>
             </div>
             <button type="submit" className="login-button">
               LOGIN
