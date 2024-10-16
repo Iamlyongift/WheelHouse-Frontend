@@ -14,7 +14,7 @@ const CarDetails = () => {
 
   useEffect(() => {
     const fetchCarDetails = async () => {
-      const baseURL = "http://localhost:2025"; // Your backend URL
+      const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
       const token = localStorage.getItem("token");
 
       try {
