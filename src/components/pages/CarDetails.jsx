@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../Css/CarDetails.css"; // Make sure to create this CSS file
+import "../Css/CArDetails.css" // Make sure to create this CSS file
 import Slider from "react-slick"; // Import your slider (like 'slick-carousel')
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
