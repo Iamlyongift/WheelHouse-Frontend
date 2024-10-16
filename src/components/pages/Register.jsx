@@ -64,7 +64,7 @@ const Register = () => {
     const baseURL = "https://wheelhouse.onrender.com";
 
     try {
-      const response = await fetch(`${baseURL}/users/adminReg`, {
+      const response = await fetch(`${baseURL}/users/register`, {
         method: "POST",
         body: data, // Send FormData directly
       });
