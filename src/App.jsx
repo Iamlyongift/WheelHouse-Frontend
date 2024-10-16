@@ -21,9 +21,7 @@ const Privacy = lazy(() => import("./components/pages/Privacy"));
 const HouseDetails = lazy(() => import("./components/pages/HouseDetail"));
 const FAQPage = lazy(() => import("./components/pages/FAQPage"));
 const Testimonials = lazy(() => import("./components/pages/Testimonials"));
-const ForgottenPassWord = lazy(() =>
-  import("./components/pages/ForgottenPassWord")
-);
+
 function App() {
   return (
     <Router>
@@ -62,14 +60,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/forgotpassword"
-              element={
-                <PrivateRoute>
-                  <ForgottenPassWord />
-                </PrivateRoute>
-              }
-            />
+           
             <Route
               path="/wishlist"
               element={
