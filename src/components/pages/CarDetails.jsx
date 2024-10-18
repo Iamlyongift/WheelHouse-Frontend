@@ -171,7 +171,7 @@ function ContactForm({ car }) {
         setSuccessMessage("");
       }
     } catch (error) {
-      setErrorMessage("Error submitting the form, please try again later");
+      setErrorMessage("Error submitting the form, please try again later", error);
       setSuccessMessage("");
     }
   };

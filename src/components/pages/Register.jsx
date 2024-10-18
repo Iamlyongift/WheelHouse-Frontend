@@ -15,7 +15,7 @@ const Register = () => {
   });
 
   const [countries, setCountries] = useState([]);
-  const [isEditable, setIsEditable] = useState(true); // Set to true directly
+
 
   // Handle input changes for text fields
   const handleChange = (e) => {

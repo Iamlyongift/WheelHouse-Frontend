@@ -47,7 +47,7 @@ const About = () => {
           <FontAwesomeIcon icon={faPhone} size="2x" className="sub-link" />
           <h3>24/7 Customer Service</h3>
           <p>
-            We're here to help you with any questions or concerns you have,
+            We are here to help you with any questions or concerns you have,
             24/7.
           </p>
         </div>
@@ -55,7 +55,7 @@ const About = () => {
           <FontAwesomeIcon icon={faBox} size="2x" />
           <h3>14-Day Money Back</h3>
           <p>
-            If you're not satisfied with your purchase, simply return it within
+            If you are not satisfied with your purchase, simply return it within
             14 days for a refund.
           </p>
         </div>

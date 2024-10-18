@@ -5,6 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { CiMail } from "react-icons/ci";
 import { FiPhone } from "react-icons/fi";
+import { useState } from "react";
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -34,47 +35,119 @@ const Contact = () => {
       mapLink: "#",
     },
   ];
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "", // Make sure the house's name exists
+  });
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `https://wheelhouse.onrender.com/users/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        setSuccessMessage(result.message);
+        setErrorMessage("");
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || "Failed to submit the form");
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      setErrorMessage(
+        "Error submitting the form, please try again later",
+        error
+      );
+      setSuccessMessage("");
+    }
+  };
+
   return (
     <section>
-     
-
       <div className="contact-container">
         <div className="contact-form">
           <h1 className="contact-header">Get In Touch</h1>
           <p>
-          To make requests for further information, contact us via our social channels.
+            To make requests for further information, contact us via our social
+            channels.
           </p>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <div>
                 <label>First Name</label>
-                <input type="text" placeholder="Ali" />
-              </div>
-              <div>
-                <label>Last Name</label>
-                <input type="text" placeholder="Tufan" />
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Ali"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
 
             <div className="form-group">
               <div>
                 <label>Email</label>
-                <input type="email" placeholder="Creativelayers088@Gmail.Com" />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Creativelayers088@Gmail.Com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </div>
               <div>
                 <label>Phone</label>
-                <input type="text" placeholder="+90 47458 27 3287 12" />
+                <input
+                  name="phone"
+                  type="text"
+                  placeholder="+90 47458 27 3287 12"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
 
             <div className="form-group">
-              <textarea placeholder="Comments"></textarea>
+              <textarea
+                name="message"
+                placeholder="Comments"
+                value={formData.message}
+                onChange={handleInputChange}
+              ></textarea>
             </div>
 
             <button type="submit" className="submit-btn">
               Send Message
             </button>
           </form>
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
 
         <div className="contact-details">
@@ -138,7 +211,7 @@ const Contact = () => {
                   <CiMail size={25} /> {office.email}
                 </p>
                 <p>
-                  <FiPhone size={25}/> {office.phone}
+                  <FiPhone size={25} /> {office.phone}
                 </p>
               </div>
             </div>
