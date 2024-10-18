@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../Css/CArDetails.css" // Make sure to create this CSS file
+import "../Css/CArDetails.css"; // Make sure to create this CSS file
 import Slider from "react-slick"; // Import your slider (like 'slick-carousel')
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,27 +11,17 @@ const CarDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     const fetchCarDetails = async () => {
       const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
-      const token = localStorage.getItem("token");
 
       try {
-        if (!token) {
-          throw new Error("No token found, please log in.");
-        }
-
-        const response = await fetch(
-          `${baseURL}/product/getSingleProduct/${id}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`${baseURL}/product/getSingleProduct/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch car details.");
@@ -47,7 +37,7 @@ const CarDetails = () => {
     };
 
     fetchCarDetails();
-  }, [id]); 
+  }, [id]);
 
   if (loading) return <p>Loading car details...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -106,7 +96,6 @@ const PropertyDetails = ({ car }) => {
   );
 };
 
-
 // Component to display safety tips
 function SafetyTips() {
   return (
@@ -152,6 +141,12 @@ function ContactForm({ car }) {
 
     try {
       const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("You must be logged in before you can send a message.");
+        return; // Prevent form submission if not authenticated
+      }
+
       const response = await fetch(`https://wheelhouse.onrender.com/users/contact`, {
         method: "POST",
         headers: {
@@ -171,7 +166,7 @@ function ContactForm({ car }) {
         setSuccessMessage("");
       }
     } catch (error) {
-      setErrorMessage("Error submitting the form, please try again later", error);
+      setErrorMessage("Error submitting the form, please try again later");
       setSuccessMessage("");
     }
   };

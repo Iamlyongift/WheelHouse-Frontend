@@ -53,13 +53,14 @@ const Testimonial = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            // Authorization header removed since it's no longer needed
           },
         });
-
+  
         if (!response.ok) {
           throw new Error("Failed to fetch reviews"); // Handle non-2xx responses
         }
-
+  
         const data = await response.json(); // Parse the JSON response
         setReviews(data); // Update state with fetched reviews
         setLoading(false); // Set loading to false after fetching
@@ -69,11 +70,11 @@ const Testimonial = () => {
         setLoading(false);
       }
     };
-
-    
+  
+    // Fetch reviews after component mounts
     fetchReviews();
-  }, []); 
-
+  }, []);
+  
   if (loading) {
     return <p>Loading reviews...</p>;
   }

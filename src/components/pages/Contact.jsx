@@ -67,6 +67,15 @@ const Contact = () => {
         }
       );
 
+      // Check if user is authenticated before making the request
+
+      const isAuthenticated = token !== null; // Assuming the user is authenticated if the token exists
+
+      if (!isAuthenticated) {
+        alert("You must be logged in before you can send a message.");
+        return; // Prevent form submission if not authenticated
+      }
+
       if (response.ok) {
         const result = await response.json();
         setSuccessMessage(result.message);

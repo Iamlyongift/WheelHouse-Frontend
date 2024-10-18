@@ -13,29 +13,24 @@ const HouseDetails = () => {
 
   useEffect(() => {
     const fetchHouseDetails = async () => {
-      const baseURL = "http://localhost:2025"; // Your backend URL
-      const token = localStorage.getItem("token");
-
+      const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
+  
       try {
-        if (!token) {
-          throw new Error("No token found, please log in.");
-        }
-
         const response = await fetch(
           `${baseURL}/product/getSingleProduct/${id}`,
           {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
+              // Authorization header removed since it's no longer needed
             },
           }
         );
-
+  
         if (!response.ok) {
           throw new Error("Failed to fetch house details.");
         }
-
+  
         const data = await response.json();
         setHouse(data.product); 
         setLoading(false);
@@ -44,9 +39,10 @@ const HouseDetails = () => {
         setLoading(false);
       }
     };
-
+  
     fetchHouseDetails();
   }, [id]);
+  
 
   if (loading) return <p>Loading house details...</p>;
   if (error) return <p>Error: {error}</p>;
