@@ -80,15 +80,10 @@ const Register = () => {
         // You can redirect the user to another page here if necessary
       } else if (responseData.message === "Email already exists") {
         // Handle case where email already exists
-        setErrorMessage(
-          responseData.message ||
-            "This email is already registered. Please try logging in."
-        );
+        setErrorMessage(responseData.message || "This email is already registered. Please try logging in.");
       } else {
         // Registration failed due to other reasons
-        setErrorMessage(
-          responseData.message || "Something went wrong. Please try again."
-        );
+        setErrorMessage(responseData.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -113,10 +108,10 @@ const Register = () => {
         setCountries([{ name: "United States", code: "US" }]); // Fallback country
       }
     };
-
+  
     fetchCountries();
   }, []);
-
+  
   return (
     <div className="container-reg">
       <div className="register-section">
