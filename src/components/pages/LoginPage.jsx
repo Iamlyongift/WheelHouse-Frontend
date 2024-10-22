@@ -2,12 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Css/login.css";
 
-const RegistrationPage = () => {
+const LoginPage = () => {
   // State to hold form data
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: "", // Add a confirm password field
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,16 +26,9 @@ const RegistrationPage = () => {
     e.preventDefault();
 
     const baseURL = "https://wheelhouse.onrender.com";
-    
-    // Validate passwords match before making the API call
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage("Passwords do not match.");
-      return;
-    }
-
+    // POST request to login endpoint
     try {
-      // POST request to register endpoint
-      const response = await fetch(`${baseURL}/users/register`, {
+      const response = await fetch(`${baseURL}/users/login`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -51,14 +43,15 @@ const RegistrationPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Registration successful, redirect to login
         localStorage.setItem("token", data.token);
-        navigate("/"); // Redirect after successful registration
-      } else if (data.message === "Email already exists") {
-        // Handle case where the email is already registered
-        setErrorMessage("This email is already registered. Please log in.");
+        // Login successful, redirect to my-account
+        console.log("Login successful:", data);
+        console.log("Navigating to  home...");
+        navigate("/"); // Redirect to the account page
       } else {
-        setErrorMessage(data.message || "Registration failed. Please try again.");
+        // Handle login failure
+        console.error(`Login failed: ${data.message || "Invalid credentials"}`);
+        setErrorMessage(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -68,14 +61,17 @@ const RegistrationPage = () => {
 
   return (
     <div className="login-page">
+      {/* Header Section */}
       <header className="login-header">
-        <h1>Register</h1>
+        <h1>Login</h1>
       </header>
 
+      {/* Login and Registration Section */}
       <div className="login-container">
         <div className="login-form">
-          <h2>Create Account</h2>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <h2>Login</h2>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
+          {/* Display error message if any */}
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -88,29 +84,30 @@ const RegistrationPage = () => {
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Password *"
               value={formData.password}
               onChange={handleChange}
               required
             />
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
+            <div className="options">
+              <label>
+                <input type="checkbox" /> Remember
+              </label>
+            </div>
             <button type="submit" className="login-button">
-              REGISTER
+              LOGIN
             </button>
           </form>
         </div>
         <div className="register-section">
-          <h2>Already have an account?</h2>
-          <p>Login to continue.</p>
-          <Link to="/login">
-            <button className="register-button">LOGIN</button>
+          <h2>New Customer</h2>
+          <p>
+            Be part of our growing family of new customers! Join us today and
+            unlock a world of exclusive benefits, offers, and personalized
+            experiences.
+          </p>
+          <Link to="/register">
+            <button className="register-button">REGISTER</button>
           </Link>
         </div>
       </div>
@@ -118,4 +115,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;

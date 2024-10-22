@@ -27,7 +27,7 @@ html {
   display: flex;
   justify-content: space-between; /* Space between brand name and menu */
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background-color: #00332c; /* Default transparent */
   position: fixed;
   top: 0;
@@ -51,6 +51,12 @@ html {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.46); /* Semi-transparent black */
   z-index: 1;
+}
+
+.logo{
+  width: 200px;
+  height: 80px;
+  object-fit: cover;
 }
 
 .links {

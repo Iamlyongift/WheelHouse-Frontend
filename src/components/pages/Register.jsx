@@ -1,4 +1,3 @@
-// src/Register.js
 import { useState, useEffect } from "react";
 import "../Css/Register.css";
 import { Link } from "react-router-dom";
@@ -15,7 +14,7 @@ const Register = () => {
   });
 
   const [countries, setCountries] = useState([]);
-
+  const [errorMessage, setErrorMessage] = useState(""); // Error message state for email validation
 
   // Handle input changes for text fields
   const handleChange = (e) => {
@@ -38,15 +37,18 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Reset error message before submission
+    setErrorMessage("");
+
     // Check if passwords match
     if (formData.password !== formData.confirm_password) {
-      alert("Passwords do not match!");
+      setErrorMessage("Passwords do not match!");
       return;
     }
 
     // Check if profile photo is uploaded
     if (!formData.profilePhoto) {
-      alert("Please upload a profile photo.");
+      setErrorMessage("Please upload a profile photo.");
       return;
     }
 
@@ -76,13 +78,16 @@ const Register = () => {
         alert("Registration successful!");
         console.log("Success:", responseData);
         // You can redirect the user to another page here if necessary
+      } else if (responseData.message === "Email already exists") {
+        // Handle case where email already exists
+        setErrorMessage("This email is already registered. Please try logging in.");
       } else {
-        // Registration failed
-        alert(`Registration failed: ${responseData.message || "Something went wrong"}`);
+        // Registration failed due to other reasons
+        setErrorMessage(responseData.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred during registration.");
+      setErrorMessage("An error occurred during registration.");
     }
   };
 
@@ -107,7 +112,6 @@ const Register = () => {
     fetchCountries();
   }, []);
   
-
   return (
     <div className="container-reg">
       <div className="register-section">
@@ -197,6 +201,9 @@ const Register = () => {
               required
             />
           </div>
+
+          {/* Error message display */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <div className="input-group checkbox-group">
             <input type="checkbox" id="terms" required />
