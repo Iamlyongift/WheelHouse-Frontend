@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 import video from "../../assets/video1.mp4";
-import Logo from "../../assets/logo-color.png";
+import Logo from "../../assets/logo-two.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
