@@ -17,6 +17,7 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState(""); // Error message state for email validation
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
 
   // Handle input changes for text fields
   const handleChange = (e) => {
@@ -41,16 +42,19 @@ const Register = () => {
 
     // Reset error message before submission
     setErrorMessage("");
+    setLoading(true);
 
     // Check if passwords match
     if (formData.password !== formData.confirm_password) {
       setErrorMessage("Passwords do not match!");
+      setLoading(false);
       return;
     }
 
     // Check if profile photo is uploaded
     if (!formData.profilePhoto) {
       setErrorMessage("Please upload a profile photo.");
+      setLoading(false);
       return;
     }
 
@@ -97,6 +101,8 @@ const Register = () => {
     } catch (error) {
       console.error("Error:", error);
       setErrorMessage("An error occurred during registration.");
+    } finally {
+      setLoading(false); // Stop loading after the response
     }
   };
 
@@ -234,8 +240,8 @@ const Register = () => {
               I agree to the <a href="#">Terms of Use</a>
             </label>
           </div>
-          <button type="submit" className="register-btn">
-            REGISTER
+          <button type="submit" className="register-btn" disabled={loading}>
+            {loading ? "Registering..." : "REGISTER"}
           </button>
         </form>
       </div>
