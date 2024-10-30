@@ -15,6 +15,8 @@ const Register = () => {
 
   const [countries, setCountries] = useState([]);
   const [errorMessage, setErrorMessage] = useState(""); // Error message state for email validation
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   // Handle input changes for text fields
   const handleChange = (e) => {
@@ -80,10 +82,15 @@ const Register = () => {
         // You can redirect the user to another page here if necessary
       } else if (responseData.message === "Email already exists") {
         // Handle case where email already exists
-        setErrorMessage(responseData.message || "This email is already registered. Please try logging in.");
+        setErrorMessage(
+          responseData.message ||
+            "This email is already registered. Please try logging in."
+        );
       } else {
         // Registration failed due to other reasons
-        setErrorMessage(responseData.message || "Something went wrong. Please try again.");
+        setErrorMessage(
+          responseData.message || "Something went wrong. Please try again."
+        );
       }
     } catch (error) {
       console.error("Error:", error);
@@ -91,27 +98,35 @@ const Register = () => {
     }
   };
 
+  const handleTogglePassword = () => setPasswordVisible(!passwordVisible);
+  const handleToggleConfirmPassword = () =>
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+
   // Fetch the list of countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
         const response = await fetch("https://restcountries.com/v3.1/all");
         if (!response.ok) throw new Error("Failed to fetch countries");
+
         const data = await response.json();
-        const countryOptions = data.map((country) => ({
-          name: country.name.common,
-          code: country.cca2,
-        }));
+        const countryOptions = data
+          .map((country) => ({
+            name: country.name.common,
+            code: country.cca2,
+          }))
+          .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically by name
+
         setCountries(countryOptions);
       } catch (error) {
         console.error("Failed to fetch countries:", error);
         setCountries([{ name: "United States", code: "US" }]); // Fallback country
       }
     };
-  
+
     fetchCountries();
   }, []);
-  
+
   return (
     <div className="container-reg">
       <div className="register-section">
@@ -142,24 +157,30 @@ const Register = () => {
           <div className="input-group">
             <input
               className="regi"
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               name="password"
               placeholder="Password*"
               value={formData.password}
               onChange={handleChange}
               required
             />
+            <span onClick={handleTogglePassword} className="toggle-icon">
+              {passwordVisible ? "👁️" : "🙈"}
+            </span>
           </div>
           <div className="input-group">
             <input
               className="regi"
-              type="password"
+              type={confirmPasswordVisible ? "text" : "password"}
               name="confirm_password"
               placeholder="Confirm Password*"
               value={formData.confirm_password}
               onChange={handleChange}
               required
             />
+            <span onClick={handleToggleConfirmPassword} className="toggle-icon">
+              {confirmPasswordVisible ? "👁️" : "🙈"}
+            </span>
           </div>
           <div className="input-group">
             <input
