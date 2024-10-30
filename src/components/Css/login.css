@@ -7,7 +7,6 @@
   padding: 2rem;
   background-color: #f8f8f8;
   min-height: auto;
-  margin-top: 5rem;
 }
 
 .login-header {
@@ -17,6 +16,25 @@
   /* background-color: #f0f0f0; */
   border-bottom: 1px solid #ddd;
   margin-bottom: 1rem;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.regi {
+  width: 100%;
+  padding-right: 40px; /* Add padding to the right to prevent text overlap */
+}
+
+.toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px; /* Adjust icon size if needed */
 }
 
 .login-header h1 {
@@ -92,7 +110,7 @@
   font-size: 1rem;
   margin-top: 0.5rem;
 }
-.login-button:hover{
+.login-button:hover {
   background-color: #5bc8ba4b;
 }
 
@@ -105,8 +123,8 @@
 .register-section .register-button {
   background-color: #00332c;
 }
-.register-button:hover{
-    background-color: #5bc8ba4b;
+.register-button:hover {
+  background-color: #5bc8ba4b;
 }
 @media (max-width: 768px) {
   .login-container {

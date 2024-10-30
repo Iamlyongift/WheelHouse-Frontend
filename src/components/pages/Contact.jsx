@@ -105,8 +105,8 @@ const Contact = () => {
           </p>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <div>
-                <label>First Name</label>
+              <div className="fullname">
+                <label>Full Name</label>
                 <input
                   name="name"
                   type="text"

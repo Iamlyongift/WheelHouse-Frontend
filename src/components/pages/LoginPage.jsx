@@ -8,6 +8,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ const LoginPage = () => {
       setErrorMessage("An error occurred. Please try again.");
     }
   };
+  const handleTogglePassword = () => setPasswordVisible(!passwordVisible);
 
   return (
     <div className="login-page">
@@ -81,14 +83,20 @@ const LoginPage = () => {
               onChange={handleChange}
               required
             />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password *"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+            <div className="input-group">
+              <input
+                className="regi"
+                type={passwordVisible ? "text" : "password"}
+                name="password"
+                placeholder="Password*"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <span onClick={handleTogglePassword} className="toggle-icon">
+                {passwordVisible ? "👁️" : "🙈"}
+              </span>
+            </div>
             <div className="options">
               <label>
                 <input type="checkbox" /> Remember

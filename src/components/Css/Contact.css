@@ -1,12 +1,14 @@
-
-.contact-header{
-    font-size: 2em;
-    margin-left: 1rem;
-    color: #f8b400;
+.contact-header {
+  font-size: 2em;
+  margin-left: 1rem;
+  color: #f8b400;
 }
-.contact-head{
+.contact-head {
   font-size: 2em;
   color: #f8b400;
+}
+.fullname {
+  width: 100% !important;
 }
 
 .map-section {
@@ -20,28 +22,28 @@
   display: flex;
   justify-content: space-between;
   padding: 50px;
-  margin-top: 4rem;
 }
 
 .contact-form,
 .contact-details {
   width: 48%;
+  margin-top: 5rem;
 }
 
 .contact-form h1 {
   font-size: 2em;
   margin-bottom: 10px;
 }
-.dark .contact-form h1{
-    color: #fff;
+.dark .contact-form h1 {
+  color: #fff;
 }
 .contact-form p {
   margin-bottom: 20px;
   font-size: 1em;
   color: #666;
 }
-.dark .contact-form p{
-    color: #fff;
+.dark .contact-form p {
+  color: #fff;
 }
 
 .form-group {
@@ -52,9 +54,6 @@
 
 .form-group div {
   width: 48%;
-}
-.dark .form-group div label{
-    color: #fff;
 }
 
 input,
@@ -72,7 +71,7 @@ textarea {
 }
 
 .submit-btn {
-  background-color: #E1C158;
+  background-color: #e1c158;
   color: white;
   padding: 15px 20px;
   border: none;
@@ -123,10 +122,9 @@ textarea {
   font-size: 2.5rem;
   margin-bottom: 40px;
 }
-.dark .offices-container h1{
-    color: #fff;
+.dark .offices-container h1 {
+  color: #fff;
 }
-
 
 .offices {
   display: flex;
@@ -140,9 +138,9 @@ textarea {
   border-radius: 10px;
   text-align: left;
 }
-.dark .office{
+.dark .office {
   color: #fff;
-  background-color:#666;
+  background-color: #666;
 }
 .office h2 {
   font-size: 1.5rem;
@@ -204,11 +202,10 @@ textarea {
   .contact-details {
     width: 100%;
   }
-  .offices-container{
+  .offices-container {
     width: 100%;
   }
   .offices-container {
     padding: 20px;
   }
-
 }

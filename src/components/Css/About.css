@@ -1,166 +1,161 @@
 /* Container for the whole about page */
 .about-container {
-    max-width: 1200px;
-    margin: 5rem auto;
-    padding: 20px;
-  }
-  
-  /* Header Section */
-  .about-header {
-    text-align: center;
-    margin-bottom: 50px;
-    margin-top: 3rem;
-  }
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
 
-  
-  .about-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .about-header p {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  
-  /* Image Grid Section */
+/* Header Section */
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 8rem;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Image Grid Section */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.image-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .image-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .image-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .image-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .about-header h1 {
-      font-size: 2rem;
-    }
-  
-    .about-header p {
-      font-size: 1rem;
-    }
+}
+
+@media (max-width: 480px) {
+  .image-grid {
+    grid-template-columns: 1fr;
   }
 
-  /* Service Features Section */
-.service-features {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 0;
-    text-align: center;
-  }
-  
-  .feature-item {
-    flex: 1;
-    margin: 0 20px;
-  }
-  
-  .feature-item i {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .feature-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .feature-item p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  /* Subscription Section */
-  .subscription {
-    background-color: #00332c; 
-    padding: 40px;
-    text-align: center;
-    border-radius: 10px;
-    color: #fff;
-
-  }
- 
-  
-  .subscription h2 {
+  .about-header h1 {
     font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
   }
-  
-  .subscription p {
+
+  .about-header p {
     font-size: 1rem;
-    margin-bottom: 30px;
-    color: #fff;
   }
-  
+}
+
+/* Service Features Section */
+.service-features {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+  text-align: center;
+}
+
+.feature-item {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.feature-item i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Subscription Section */
+.subscription {
+  background-color: #00332c;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.subscription h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subscription p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.subscription-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.subscription-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.subscription-form button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subscription-form button:hover {
+  background-color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .service-features {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   .subscription-form {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
   }
-  
+
   .subscription-form input {
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    width: 300px;
+    width: 100%;
   }
-  
-  .subscription-form button {
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .subscription-form button:hover {
-    background-color: #444;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .service-features {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-  
-    .subscription-form {
-      flex-direction: column;
-    }
-  
-    .subscription-form input {
-      width: 100%;
-    }
+}
 
-  }
-
-  /* Container for the whole about page */
+/* Container for the whole about page */
 .about-container {
   max-width: 1200px;
-  margin: 5rem auto;
   padding: 20px;
 }
 
@@ -168,14 +163,15 @@
 .team-section {
   text-align: center;
   padding: 50px 0;
+  margin-bottom: 5rem;
 }
 
 .team-section h2 {
   font-size: 2.5rem;
   margin-bottom: 40px;
 }
-.team-section h2 span{
-   color: #f8b400;
+.team-section h2 span {
+  color: #f8b400;
 }
 
 .team-container {
@@ -200,7 +196,6 @@
   object-fit: cover;
 }
 
-
 .team-card h3 {
   font-size: 1.5rem;
   margin: 10px 0;
@@ -214,11 +209,10 @@
 /* Responsive design for Team section */
 @media (max-width: 768px) {
   .team-container {
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-     
-      gap: 10rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
   }
   .team-card {
     border-radius: 10px;

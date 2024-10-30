@@ -77,7 +77,9 @@ const Register = () => {
 
       if (response.ok) {
         // Registration successful
-        alert("Registration successful!");
+        alert(
+          "Registration successful! check your mail for verification email"
+        );
         console.log("Success:", responseData);
         // You can redirect the user to another page here if necessary
       } else if (responseData.message === "Email already exists") {
