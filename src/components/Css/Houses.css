@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, 3fr);
   gap: 20px;
   padding: 20px;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .page-title {

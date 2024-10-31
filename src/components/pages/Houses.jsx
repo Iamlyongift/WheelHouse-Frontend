@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import "../Css/Houses.css"; // Ensure this CSS file exists and is properly linked
+import "../Css/Houses.css";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PiGreaterThan } from "react-icons/pi";
-import { FaLessThan } from "react-icons/fa6"; // Check if FaLessThan is from react-icons
+import { FaLessThan } from "react-icons/fa6";
 
 const House = () => {
   const [houseData, setHouseData] = useState([]);
@@ -79,7 +79,7 @@ const House = () => {
 
   const truncateText = (text, limit) => {
     if (text.length > limit) {
-      return text.substring(0, limit) + '...';
+      return text.substring(0, limit) + "...";
     }
     return text;
   };
@@ -124,7 +124,10 @@ const House = () => {
                   <h3 className="house-title">{house.productName}</h3>
                 </Link>
                 <p className="house-price">Price: ${house.price}</p>
-                <p><span>Description:</span> {truncateText(house.description, descriptionLimit)}</p>
+                <p>
+                  <span>Description:</span>{" "}
+                  {truncateText(house.description, descriptionLimit)}
+                </p>
                 <p className="house-stock">Stock: {house.stock}</p>
               </div>
             </div>
