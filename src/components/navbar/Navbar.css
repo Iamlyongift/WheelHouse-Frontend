@@ -5,21 +5,22 @@ html {
   height: 100%;
   overflow-x: hidden;
 }
+
 /* Add styling for brand name */
 .brand-name {
- width: 210px;
- height: 90px;
- padding-top:15px ;
- padding-left: 15px;
+  width: 210px;
+  height: 90px;
+  padding-top: 15px;
+  padding-left: 15px;
 }
 
-.logo{
+.logo {
   width: 100%;
   height: 90%;
-  object-fit:cover;
+  object-fit: cover;
 }
 
-.link-home{
+.link-home {
   text-decoration: none;
 }
 
@@ -30,7 +31,7 @@ html {
   align-items: center;
   padding: 10px;
   background-color: #00332c; /* Default transparent */
-  position: fixed;
+  position: sticky;
   width: 100%;
   z-index: 10;
   transition: background-color 0.3s ease-in-out; /* Smooth transition */
@@ -40,7 +41,6 @@ html {
   background-color: #00332c; /* Changes color when scrolled */
   transition: background-color 0.3s ease-in-out;
 }
-
 
 /* Dark overlay on top of the video */
 .overlay {
@@ -52,8 +52,6 @@ html {
   background-color: rgba(0, 0, 0, 0.46); /* Semi-transparent black */
   z-index: 1;
 }
-
-
 
 .links {
   color: #fff;
@@ -68,7 +66,6 @@ html {
   justify-content: center;
   align-items: center;
 }
-
 
 .hero {
   position: relative;
@@ -104,7 +101,6 @@ html {
   color: white;
   background-color: #333;
   cursor: pointer;
-  
 }
 
 .btn.secondary {
@@ -119,7 +115,7 @@ html {
   border: none;
   cursor: pointer;
 }
-.reg-btn{
+.reg-btn {
   text-decoration: none;
   color: #fff;
   cursor: pointer;
@@ -151,18 +147,17 @@ html {
 }
 .login-button {
   width: auto;
-  padding:5px;
+  padding: 5px;
   border: none;
   outline: none;
   border-radius: 10px;
   background-color: transparent;
   color: white;
   cursor: pointer;
-}  
-.login-button:hover{
-background-color: #f8b400;
 }
-
+.login-button:hover {
+  background-color: #f8b400;
+}
 
 /* Hide the links on small screens */
 @media (max-width: 768px) {
@@ -170,17 +165,16 @@ background-color: #f8b400;
     justify-content: space-between;
   }
 
-
   .brand-name {
     width: 170px;
     height: 80px;
-   }
-   
-   .logo{
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-   }
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .menu-icon {
     display: block;
@@ -207,10 +201,10 @@ background-color: #f8b400;
     border-radius: 7px;
     background-color: transparent;
     color: white;
-}  
-.login-button:hover{
-  background-color: #f8b400;
-}
+  }
+  .login-button:hover {
+    background-color: #f8b400;
+  }
 
   .nav-links.open {
     display: flex; /* Display flex on open */

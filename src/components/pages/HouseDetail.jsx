@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../Css/HouseDetails.css"
+import "../Css/HouseDetails.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loader from "../Loader/Loader";
 
 const HouseDetails = () => {
   const { id } = useParams(); // Get house ID from the URL
@@ -14,7 +15,7 @@ const HouseDetails = () => {
   useEffect(() => {
     const fetchHouseDetails = async () => {
       const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
-  
+
       try {
         const response = await fetch(
           `${baseURL}/product/getSingleProduct/${id}`,
@@ -26,25 +27,29 @@ const HouseDetails = () => {
             },
           }
         );
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch house details.");
         }
-  
+
         const data = await response.json();
-        setHouse(data.product); 
+        setHouse(data.product);
         setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
-  
+
     fetchHouseDetails();
   }, [id]);
-  
 
-  if (loading) return <p>Loading house details...</p>;
+  if (loading)
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
 
   const sliderSettings = {
@@ -92,9 +97,18 @@ const PropertyDetails = ({ house }) => {
       <div className="house-info">
         <h2>{house.productName}</h2> {/* House name/title */}
         {/* <p><span>Category:</span> {house.category}</p>  */}
-        <p className="price"><span>Price:</span> ${house.price}</p> {/* Price with special styling */}
-        <p><span>Description:</span> {house.description}</p> {/* Description of the house */}
-        <p className="stock"><span>Stock:</span> {house.stock}</p> {/* Stock with red color styling */}
+        <p className="price">
+          <span>Price:</span> ${house.price}
+        </p>{" "}
+        {/* Price with special styling */}
+        <p>
+          <span>Description:</span> {house.description}
+        </p>{" "}
+        {/* Description of the house */}
+        <p className="stock">
+          <span>Stock:</span> {house.stock}
+        </p>{" "}
+        {/* Stock with red color styling */}
       </div>
     </section>
   );

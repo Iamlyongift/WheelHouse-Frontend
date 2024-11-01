@@ -1,261 +1,256 @@
 .property-page {
+  height: auto;
+  display: flex;
+  margin: 5rem auto;
+  justify-content: center;
+  padding-bottom: 100px; /* Add padding to push content above the footer */
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.main-content {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+aside {
+  width: 25%;
+}
+
+.property-details {
+  width: 80%;
+  margin-block: 20px;
+  height: 150px;
+  border-bottom: 4px solid #000;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.property-details .divONe {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divONe h1 {
+  text-decoration: underline;
+  color: #00332c;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.featured-badge {
+  background: 00332c;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.contact-form {
+  width: 100%;
+  height: 480px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 13px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.contact-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.contact-form button {
+  padding: 10px 20px;
+  background-color: transparent; /* Adjust as needed */
+  color: #222;
+  cursor: pointer;
+}
+.contact-form button {
+  margin-top: 1rem;
+  margin: 10px;
+}
+.contact-form button:hover {
+  background-color: #00332c;
+  color: #fff;
+}
+/* Style for the entire slider container */
+.slick-slider {
+  width: 80%; /* Adjust width as needed */
+  height: 480px; /* Adjust height as needed */
+  margin: 1rem auto; /* Centers the slider horizontally */
+  border-radius: 10px;
+}
+
+/* Style for individual slides */
+.slick-slide img {
+  width: 100%; /* Ensures image takes the full width of the slide */
+  height: 100%; /* Ensures image takes the full height */
+  object-fit: cover; /* Ensures image covers the entire slide without distortion */
+  border-radius: 10px;
+}
+.slick-slide div {
+  height: 480px;
+}
+
+/* Optional: Adjust arrows size */
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+  color: #000; /* Increase or decrease the arrow size */
+}
+
+.safety-container {
+  width: 80%;
+  height: 200px;
+  background-color: #e9ecef;
+  padding: 1rem;
+  border-radius: 10px;
+  line-height: 25px;
+}
+.safety-container ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.safety-container ul li {
+  list-style-type: none;
+  font-size: small;
+  text-align-last: left;
+}
+
+@media (max-width: 768px) {
+  .property-page {
     height: auto;
-    display: flex;
-    margin: 10rem auto;
-    justify-content: center;
-    padding-bottom: 100px; /* Add padding to push content above the footer */
-  }
-  
-  .detail{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2rem;
+    justify-content: space-between;
+    padding-bottom: 100px; /* Add padding to push content above the footer */
   }
   .main-content {
-    width: 70%;
-    height: auto;
+    width: 100%;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    margin: 4rem auto;
   }
-  
-  aside {
-    width: 25%;
+  .slick-slide div {
+    width: 100%;
+    height: 350px;
+    margin-top: 4rem;
   }
-  
+
+  .slick-slider {
+    width: 90%;
+    margin: 1rem auto; /* Centers the slider horizontally */
+  }
+
   .property-details {
-    width: 80%;
-    margin-block: 20px;
+    width: 90%;
+    height: auto;
+    margin-block: 3rem 2rem;
     height: 150px;
     border-bottom: 4px solid #000;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-  }
-  
-  .property-details .divONe {
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
   }
-  
+  Slider {
+    margin-top: 3rem;
+  }
   .divONe h1 {
-    text-decoration: underline;
-    color: #00332c;
+    font-size: large;
   }
-  
-  .price {
-    font-size: 24px;
-    font-weight: bold;
+
+  aside {
+    width: 90%;
+    margin-inline: 1rem;
+    margin-top: 10rem;
   }
-  
-  .featured-badge {
-    background: 00332c;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .contact-form {
-    width: 100%;
-    height: 480px;
-    margin: 30px auto;
-    background-color: #ffffff;
-   padding: 1rem;
-    border-radius: 13px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  .contact-form input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-bottom: 1px solid black;
-    border-radius: 5px;
-    outline: none;
-  }
-  
-  .contact-form textarea {
-    display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .contact-form button {
-    padding: 10px 20px;
-    background-color: transparent; /* Adjust as needed */
-    color: #222;
-    cursor: pointer;
-  }
-  .contact-form button {
-    margin-top: 1rem;
-    margin: 10px;
-  }
-  .contact-form button:hover {
-    background-color: #00332c;
-    color: #fff;
-  }
-  /* Style for the entire slider container */
-  .slick-slider {
-    width: 80%; /* Adjust width as needed */
-    height: 480px; /* Adjust height as needed */
-    margin: 1rem auto; /* Centers the slider horizontally */
-    border-radius: 10px;
-  }
-  
-  /* Style for individual slides */
-  .slick-slide img {
-    width: 100%; /* Ensures image takes the full width of the slide */
-    height: 100%; /* Ensures image takes the full height */
-    object-fit: cover; /* Ensures image covers the entire slide without distortion */
-    border-radius: 10px;
-  }
-  .slick-slide div {
-    height: 480px;
-  }
-  
-  /* Optional: Adjust arrows size */
-  .slick-prev,
-  .slick-next {
-    font-size: 24px;
-    color: #000; /* Increase or decrease the arrow size */
-  }
-  
+
   .safety-container {
-    width: 80%;
-    height: 200px;
+    width: 90%;
+    height: auto;
     background-color: #e9ecef;
     padding: 1rem;
     border-radius: 10px;
-    line-height: 25px;
+    color: black;
   }
+
   .safety-container ul {
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    color: black;
   }
   .safety-container ul li {
-    list-style-type: none;
+    list-style-type: circle;
     font-size: small;
     text-align-last: left;
+    color: #222;
   }
-  
-  @media (max-width: 768px) {
-    .property-page {
-      height: auto;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      justify-content: space-between;
-      padding-bottom: 100px; /* Add padding to push content above the footer */
-    }
-    .main-content {
-      width: 100%;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 4rem auto;
-     
-    }
-    .slick-slide div {
-      width: 100%;
-      height: 350px;
-      margin-top: 4rem;
-    }
-  
-    .slick-slider {
-      width: 90%;
-      margin: 1rem auto; /* Centers the slider horizontally */
-    }
-  
-    .property-details {
-      width: 90%;
-      height: auto;
-      margin-block: 3rem 2rem;
-      height: 150px;
-      border-bottom: 4px solid #000;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    Slider {
-      margin-top: 3rem;
-    }
-    .divONe h1 {
-      font-size: large;
-    }
-  
-    aside {
-      width: 90%;
-      margin-inline: 1rem;
-      margin-top: 10rem;
-    }
-  
-    .safety-container {
-      width: 90%;
-      height: auto;
-      background-color: #e9ecef;
-      padding: 1rem;
-      border-radius: 10px;
-      color: black;
-    }
-  
-    .safety-container ul {
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      color: black;
-    }
-    .safety-container ul li {
-      list-style-type: circle;
-      font-size: small;
-      text-align-last: left;
-      color: #222;
-    }
-    .contact-form {
-     height: auto; 
-      padding: 1rem;
-    }
+  .contact-form {
+    height: auto;
+    padding: 1rem;
   }
-  
+}
 
-
-
-  
 /* PropertyDetails */
 .house-details-container {
   background-color: #f9f9f9;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px ;
-  padding: 20px; 
-  margin-bottom: 20px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px;
+  padding: 20px;
+  margin-bottom: 20px;
   width: 80%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .house-info {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .house-info h2 {
-  font-size: 24px; 
-  font-weight: 600; 
-  color: #333; 
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 10px;
-  border-bottom: 2px solid #eee; 
+  border-bottom: 2px solid #eee;
   padding-bottom: 5px;
 }
 
@@ -281,7 +276,6 @@
   color: #e74c3c; /* Red color for stock, indicating critical information */
   font-weight: 600;
 }
-
 
 @media (max-width: 768px) {
   .property-page {
@@ -322,7 +316,7 @@
     display: flex;
     padding: 10px;
     justify-content: space-between;
- 
+
     gap: 1rem;
   }
   Slider {
@@ -362,7 +356,7 @@
     color: #222;
   }
   .contact-form {
-   height: auto; 
+    height: auto;
     padding: 1rem;
   }
 }

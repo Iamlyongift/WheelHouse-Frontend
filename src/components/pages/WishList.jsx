@@ -8,7 +8,7 @@ const Wishlist = () => {
 
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    console.log(storedWishlist); // Add this line to check your wishlist data
+    console.log("Stored wishlist data:", storedWishlist); // Check structure here
     setWishlist(storedWishlist);
   }, []);
 
@@ -27,12 +27,18 @@ const Wishlist = () => {
         <div className="wishlist-grid">
           {wishlist.map((item) => (
             <div key={item.id} className="wishlist-item">
-              <img src={item.images[0]} alt={item.title} />
+              <img
+                src={
+                  item.images && item.images[0]
+                    ? item.images[0]
+                    : "default-image.jpg"
+                }
+                alt={item.title || "Image"}
+                className="img-con"
+              />
               <div className="wishlist-item-details">
-                <h3>{item.title}</h3>
-                <p>Price: {item.price}</p>
-                <p>Bedrooms: {item.bedrooms}</p>
-                <p>Bathrooms: {item.bathrooms}</p>
+                <h3>{item.productName || "No title available"}</h3>
+                <p>Price: {item.price || "N/A"}</p>
                 <div className="wishlist-actions">
                   <Link to={`/item/${item.id}`}>View Details</Link>
                   <button onClick={() => removeFromWishlist(item.id)}>

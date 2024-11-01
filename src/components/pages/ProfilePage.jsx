@@ -10,10 +10,9 @@ const ProfilePage = () => {
     phone_number: "",
     country: "",
     profilePhoto: "",
-    
   });
 
-  const [newProfilePhoto, setNewProfilePhoto] = useState(null); 
+  const [newProfilePhoto, setNewProfilePhoto] = useState(null);
   const [passwords, setPasswords] = useState({
     currentPassword: "",
     newPassword: "",
@@ -56,11 +55,7 @@ const ProfilePage = () => {
                 phone_number: data.user.phoneNumber || "", // Use phoneNumber instead of phone_number
                 country: data.user.country || "", // Ensure country is available in data
                 profilePhoto: data.user.profilePhoto || "",
-
-                
               });
-
-              
 
               // Enable editing after data is fetched
               setIsEditable(true);
@@ -109,14 +104,14 @@ const ProfilePage = () => {
   // Update account details
   const updateAccount = async () => {
     const token = localStorage.getItem("token");
-  
+
     if (!token) {
       navigate("/login");
       return;
     }
-  
+
     const baseURL = "https://wheelhouse.onrender.com";
-  
+
     try {
       // Create a FormData object to hold the form fields and file
       const formData = new FormData();
@@ -124,11 +119,11 @@ const ProfilePage = () => {
       formData.append("email", userInfo.email);
       formData.append("phone_number", userInfo.phone_number);
       formData.append("country", userInfo.country);
-  
+
       if (newProfilePhoto) {
         formData.append("profilePhoto", newProfilePhoto); // Append the new profile photo file
       }
-  
+
       // Make the PUT request to update the user profile
       const response = await fetch(`${baseURL}/users/update_profile`, {
         method: "PUT",
@@ -137,9 +132,9 @@ const ProfilePage = () => {
         },
         body: formData, // Send the FormData object
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log("Profile updated successfully", data);
       } else {
@@ -151,13 +146,11 @@ const ProfilePage = () => {
       setError("An error occurred. Please try again.");
     }
   };
-  
 
-   // Handle file change for profile photo
-   const handleFileChange = (e) => {
+  // Handle file change for profile photo
+  const handleFileChange = (e) => {
     setNewProfilePhoto(e.target.files[0]); // Set the new profile photo
   };
-
 
   return (
     <div className="container">
@@ -165,8 +158,12 @@ const ProfilePage = () => {
         {/* Sidebar */}
         <div className="sidebar">
           <div className="profile-section">
-          <img
-              src={userInfo.profilePhoto ? userInfo.profilePhoto : "default-image-path.jpg"}
+            <img
+              src={
+                userInfo.profilePhoto
+                  ? userInfo.profilePhoto
+                  : "default-image-path.jpg"
+              }
               alt={userInfo.username}
               className="profile-img"
             />
@@ -174,8 +171,8 @@ const ProfilePage = () => {
             <h3>{userInfo.username}</h3>
             <p>{userInfo.email}</p>
             <ul className="nav-list">
-              <li className="nav-item">Account Details</li>
-              <li className="nav-item">Your Orders</li>
+              <li className="nav-item">{userInfo.country}</li>
+              <li className="nav-item">{userInfo.phone_number}</li>
               <li className="nav-item">My Address</li>
               <li
                 className="nav-item"
@@ -293,19 +290,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

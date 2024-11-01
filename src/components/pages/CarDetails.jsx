@@ -4,6 +4,7 @@ import "../Css/CArDetails.css"; // Make sure to create this CSS file
 import Slider from "react-slick"; // Import your slider (like 'slick-carousel')
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loader from "../Loader/Loader";
 
 const CarDetails = () => {
   const { id } = useParams(); // Get car ID from the URL
@@ -16,12 +17,15 @@ const CarDetails = () => {
       const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
 
       try {
-        const response = await fetch(`${baseURL}/product/getSingleProduct/${id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${baseURL}/product/getSingleProduct/${id}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch car details.");
@@ -39,7 +43,12 @@ const CarDetails = () => {
     fetchCarDetails();
   }, [id]);
 
-  if (loading) return <p>Loading car details...</p>;
+  if (loading)
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
 
   // Slick slider settings
@@ -87,10 +96,22 @@ const PropertyDetails = ({ car }) => {
     <section className="car-details-container">
       <div className="car-info">
         <h2>{car.productName}</h2> {/* Car name/title */}
-        <p><span>Category:</span> {car.category}</p> {/* Car category */}
-        <p className="price"><span>Price:</span> ${car.price}</p> {/* Price with special styling */}
-        <p><span>Description:</span> {car.description}</p> {/* Description of the car */}
-        <p className="stock"><span>Stock:</span> {car.stock}</p> {/* Stock with red color styling */}
+        <p>
+          <span>Category:</span> {car.category}
+        </p>{" "}
+        {/* Car category */}
+        <p className="price">
+          <span>Price:</span> ${car.price}
+        </p>{" "}
+        {/* Price with special styling */}
+        <p>
+          <span>Description:</span> {car.description}
+        </p>{" "}
+        {/* Description of the car */}
+        <p className="stock">
+          <span>Stock:</span> {car.stock}
+        </p>{" "}
+        {/* Stock with red color styling */}
       </div>
     </section>
   );
@@ -147,14 +168,17 @@ function ContactForm({ car }) {
         return; // Prevent form submission if not authenticated
       }
 
-      const response = await fetch(`https://wheelhouse.onrender.com/users/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://wheelhouse.onrender.com/users/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
@@ -166,7 +190,10 @@ function ContactForm({ car }) {
         setSuccessMessage("");
       }
     } catch (error) {
-      setErrorMessage("Error submitting the form, please try again later");
+      setErrorMessage(
+        "Error submitting the form, please try again later",
+        error
+      );
       setSuccessMessage("");
     }
   };

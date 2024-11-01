@@ -3,13 +3,12 @@
   grid-template-columns: repeat(3, 3fr);
   gap: 20px;
   padding: 20px;
-  /* margin-top: 2rem; */
+  margin-top: 5rem;
 }
 
 .page-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-top: 8rem;
   margin-bottom: 30px;
   color: #333;
 }

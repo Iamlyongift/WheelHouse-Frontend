@@ -5,6 +5,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PiGreaterThan } from "react-icons/pi";
 import { FaLessThan } from "react-icons/fa6";
+import Loader from "../Loader/Loader";
 
 const House = () => {
   const [houseData, setHouseData] = useState([]);
@@ -88,7 +89,12 @@ const House = () => {
   const descriptionLimit = 150;
 
   // Handle loading and error states
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
 
   return (

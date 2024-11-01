@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../Css/Reviews.css";
+import Loader from "../Loader/Loader";
 
 const Testimonials = () => {
   return (
@@ -22,16 +23,13 @@ const Hero = () => {
           About Us
         </h1>
         <p>
-          For over 25 years we have continued to focus on providing a great
-          experience for our customers.
+          For over 5 years and counting we have continued to focus on providing
+          a great experience for our customers.
         </p>
         <p>
           Scroll down to read what our customers have to say about us, in their
           own words.
         </p>
-      </div>
-      <div className="hero-image">
-        <img src="path-to-car-image" alt="Car" />
       </div>
     </section>
   );
@@ -56,11 +54,11 @@ const Testimonial = () => {
             // Authorization header removed since it's no longer needed
           },
         });
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch reviews"); // Handle non-2xx responses
         }
-  
+
         const data = await response.json(); // Parse the JSON response
         setReviews(data); // Update state with fetched reviews
         setLoading(false); // Set loading to false after fetching
@@ -70,13 +68,17 @@ const Testimonial = () => {
         setLoading(false);
       }
     };
-  
+
     // Fetch reviews after component mounts
     fetchReviews();
   }, []);
-  
+
   if (loading) {
-    return <p>Loading reviews...</p>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   // Handle error state

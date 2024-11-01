@@ -5,6 +5,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PiGreaterThan } from "react-icons/pi";
 import { FaLessThan } from "react-icons/fa6"; // Check if FaLessThan is from react-icons
+import Loader from "../Loader/Loader";
 
 const Product = () => {
   const [carData, setCarData] = useState([]);
@@ -78,7 +79,12 @@ const Product = () => {
   };
 
   // Handle loading and error states
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div>
+        <Loader />.
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -113,7 +119,6 @@ const Product = () => {
                 <Link to={`/cars/${car._id}`} className="link">
                   <h3 className="car-title">{car.productName}</h3>
                 </Link>
-                <p className="car-category">Category: {car.category}</p>
                 <p className="car-price">Price: ${car.price}</p>
                 <p className="car-description">{car.description}</p>
                 <p className="car-stock">Stock: {car.stock}</p>

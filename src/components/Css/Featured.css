@@ -21,6 +21,9 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.link {
+  color: #00332c;
+}
 .home-section:hover {
   transform: translateY(-10px);
 }
