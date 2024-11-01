@@ -60,7 +60,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-           
+
             <Route
               path="/wishlist"
               element={
