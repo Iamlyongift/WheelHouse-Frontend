@@ -55,7 +55,7 @@ const NavigationBar = () => {
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <Link to="/" className="link-home" onClick={closeMenu}>
         <div className="brand-name">
-          <img src={Logo} alt="" className="logo"/>
+          <img src={Logo} alt="" className="logo" />
         </div>
       </Link>
       <div className="menu-icon" onClick={toggleMenu}>
@@ -126,9 +126,10 @@ const NavigationBar = () => {
 const HeroSection = () => {
   return (
     <div className="hero-container">
-      <video autoPlay loop muted>
+      <video autoPlay loop muted playsInline>
         <source src={video} type="video/mp4" />
       </video>
+
       {/* Dark Overlay */}
       <div className="overlay"></div>
       <div className="hero-content">
