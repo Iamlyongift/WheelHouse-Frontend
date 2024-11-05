@@ -9,7 +9,7 @@ const LoginPage = () => {
     password: "",
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
-
+  const [loading, setLoading] = useState(false); // New loading state
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -25,9 +25,9 @@ const LoginPage = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when the request starts
 
     const baseURL = "https://wheelhouse.onrender.com";
-    // POST request to login endpoint
     try {
       const response = await fetch(`${baseURL}/users/login`, {
         method: "POST",
@@ -45,35 +45,33 @@ const LoginPage = () => {
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        // Login successful, redirect to my-account
         console.log("Login successful:", data);
-        console.log("Navigating to  home...");
-        navigate("/"); // Redirect to the account page
+        console.log("Navigating to home...");
+        navigate("/"); // Redirect to the home page
       } else {
-        // Handle login failure
         console.error(`Login failed: ${data.message || "Invalid credentials"}`);
         setErrorMessage(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("An error occurred:", error);
       setErrorMessage("An error occurred. Please try again.");
+    } finally {
+      setLoading(false); // Set loading to false when the request completes
     }
   };
+
   const handleTogglePassword = () => setPasswordVisible(!passwordVisible);
 
   return (
     <div className="login-page">
-      {/* Header Section */}
       <header className="login-header">
         <h1>Login</h1>
       </header>
 
-      {/* Login and Registration Section */}
       <div className="login-container">
         <div className="login-form">
           <h2>Login</h2>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
-          {/* Display error message if any */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -102,9 +100,10 @@ const LoginPage = () => {
                 <input type="checkbox" /> Remember
               </label>
             </div>
-            <button type="submit" className="login-button">
-              LOGIN
+            <button type="submit" className="login-button" disabled={loading}>
+              {loading ? "Logging in..." : "LOGIN"}
             </button>
+            {loading && <div className="loader"></div>} {/* Loader */}
           </form>
         </div>
         <div className="register-section">
