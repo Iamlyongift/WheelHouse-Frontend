@@ -34,7 +34,7 @@ const ProfilePage = () => {
 
         // Fetch user info from backend using userId
         const fetchUserInfo = async () => {
-          const baseURL = "https://wheelhouse.onrender.com";
+          const baseURL =  "https://api.cribsandrides.com";
           try {
             const response = await fetch(`${baseURL}/users/profile/${userId}`, {
               method: "GET",
@@ -110,7 +110,7 @@ const ProfilePage = () => {
       return;
     }
 
-    const baseURL = "https://wheelhouse.onrender.com";
+    const baseURL =  "https://api.cribsandrides.com";
 
     try {
       // Create a FormData object to hold the form fields and file

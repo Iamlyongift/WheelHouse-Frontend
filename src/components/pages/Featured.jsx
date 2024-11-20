@@ -1,6 +1,7 @@
 import "../Css/Featured.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
 
 // HomeCard Component
 const HomeCard = ({ house }) => {
@@ -52,7 +53,7 @@ const FeaturedHomes = () => {
 
   useEffect(() => {
     const fetchHouses = async () => {
-      const baseURL = "https://wheelhouse.onrender.com";
+      const baseURL = "https://api.cribsandrides.com";
 
       try {
         const response = await fetch(`${baseURL}/product/houses`, {
@@ -79,7 +80,11 @@ const FeaturedHomes = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <p>
+        <Loader />
+      </p>
+    );
   }
 
   if (error) {

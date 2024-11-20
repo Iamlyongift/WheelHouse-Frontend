@@ -69,7 +69,7 @@ const Register = () => {
     data.append("profilePhoto", formData.profilePhoto); // Append file
 
     // Define base URL for the backend
-    const baseURL = "https://wheelhouse.onrender.com";
+    const baseURL =  "https://api.cribsandrides.com";
 
     try {
       const response = await fetch(`${baseURL}/users/register`, {

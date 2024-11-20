@@ -56,7 +56,7 @@ const Contact = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://wheelhouse.onrender.com/users/contact`,
+        `https://api.cribsandrides.com/users/contact`,
         {
           method: "POST",
           headers: {

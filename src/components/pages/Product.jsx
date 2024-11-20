@@ -25,7 +25,7 @@ const Product = () => {
   // Fetch car data without authentication
   useEffect(() => {
     const fetchCars = async () => {
-      const baseURL = "https://wheelhouse.onrender.com";
+      const baseURL = "https://api.cribsandrides.com";
 
       try {
         const response = await fetch(`${baseURL}/product/cars`, {

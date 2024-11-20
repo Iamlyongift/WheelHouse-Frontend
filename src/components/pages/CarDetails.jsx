@@ -14,7 +14,7 @@ const CarDetails = () => {
 
   useEffect(() => {
     const fetchCarDetails = async () => {
-      const baseURL = "https://wheelhouse.onrender.com"; // Your backend URL
+      const baseURL = "https://api.cribsandrides.com"; // Your backend URL
 
       try {
         const response = await fetch(
@@ -169,7 +169,7 @@ function ContactForm({ car }) {
       }
 
       const response = await fetch(
-        `https://wheelhouse.onrender.com/users/contact`,
+        `https://api.cribsandrides.com/users/contact`,
         {
           method: "POST",
           headers: {

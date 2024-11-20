@@ -46,7 +46,7 @@ const Testimonial = () => {
       try {
         // Set loading to true before fetching
         setLoading(true);
-        const baseURL = "https://wheelhouse.onrender.com";
+        const baseURL = "https://api.cribsandrides.com";
         const response = await fetch(`${baseURL}/users/testimonials`, {
           method: "GET",
           headers: {
@@ -138,7 +138,7 @@ const ReviewForm = () => {
       rating,
     };
 
-    const baseURL = "https://wheelhouse.onrender.com";
+    const baseURL = "https://api.cribsandrides.com";
 
     try {
       const response = await fetch(`${baseURL}/users/create-testimonials`, {

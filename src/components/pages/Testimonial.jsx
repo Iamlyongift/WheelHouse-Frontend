@@ -15,7 +15,7 @@ const Testimonial = () => {
       try {
         // Set loading to true before fetching
         setLoading(true);
-        const baseURL = "https://wheelhouse.onrender.com";
+        const baseURL = "https://api.cribsandrides.com";
         const response = await fetch(`${baseURL}/users/testimonials`, {
           method: "GET",
           headers: {
@@ -23,11 +23,11 @@ const Testimonial = () => {
             // Authorization header removed since it's no longer needed
           },
         });
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch reviews"); // Handle non-2xx responses
         }
-  
+
         const data = await response.json(); // Parse the JSON response
         setReviews(data); // Update state with fetched reviews
         setLoading(false); // Set loading to false after fetching
@@ -37,13 +37,10 @@ const Testimonial = () => {
         setLoading(false);
       }
     };
-  
+
     // Fetch reviews after component mounts
     fetchReviews();
   }, []);
-  
-
-
 
   useEffect(() => {
     const slider = sliderRef.current;
