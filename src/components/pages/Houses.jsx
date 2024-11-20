@@ -25,7 +25,7 @@ const House = () => {
   // Fetch house data without authentication
   useEffect(() => {
     const fetchHouses = async () => {
-      const baseURL =  "https://api.cribsandrides.com";
+      const baseURL = "https://api.cribsandrides.com";
 
       try {
         const response = await fetch(`${baseURL}/product/houses`, {
