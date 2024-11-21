@@ -123,26 +123,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-const loginUser = async (userData: { email: string, password: string }) => {
-  try {
-    const response = await fetch("http://localhost:2025/users/login", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Login error:", error);
-    throw error;
-  }
-};
