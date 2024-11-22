@@ -157,7 +157,7 @@ function ContactForm({ house }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoader(true);
+    setLoader(true); // Start the loader
 
     try {
       const token = localStorage.getItem("token");
@@ -172,8 +172,14 @@ function ContactForm({ house }) {
 
       if (response.ok) {
         const result = await response.json();
-        setSuccessMessage(result.message);
+        setSuccessMessage(result.message || "Form submitted successfully!");
         setErrorMessage("");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: `Hello, I am interested in ${house.productName}`,
+        }); // Reset form fields
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error || "Failed to submit the form");
@@ -185,6 +191,8 @@ function ContactForm({ house }) {
         error
       );
       setSuccessMessage("");
+    } finally {
+      setLoader(false); // Ensure loader is stopped in both success and error cases
     }
   };
 

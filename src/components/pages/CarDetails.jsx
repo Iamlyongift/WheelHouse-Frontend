@@ -160,32 +160,29 @@ function ContactForm({ car }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoader(true); // Set loading to true when the request starts
+    setLoader(true); // Start the loader
 
     try {
       const token = localStorage.getItem("token");
-
-      if (!token) {
-        alert("You must be logged in before you can send a message.");
-        return; // Prevent form submission if not authenticated
-      }
-
-      const response = await fetch(
-        `https://api.cribsandrides.com/users/contact`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`https://api.cribsandrides.com`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const result = await response.json();
-        setSuccessMessage(result.message);
+        setSuccessMessage(result.message || "Form submitted successfully!");
         setErrorMessage("");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: `Hello, I am interested in ${house.productName}`,
+        }); // Reset form fields
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error || "Failed to submit the form");
@@ -197,6 +194,8 @@ function ContactForm({ car }) {
         error
       );
       setSuccessMessage("");
+    } finally {
+      setLoader(false); // Ensure loader is stopped in both success and error cases
     }
   };
 
