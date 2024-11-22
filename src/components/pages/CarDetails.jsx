@@ -142,6 +142,7 @@ function SafetyTips() {
 
 // Contact Form component
 function ContactForm({ car }) {
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -159,6 +160,7 @@ function ContactForm({ car }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true); // Set loading to true when the request starts
 
     try {
       const token = localStorage.getItem("token");
@@ -241,7 +243,10 @@ function ContactForm({ car }) {
         onChange={handleInputChange}
       ></textarea>
       <div className="button-group">
-        <button type="submit">Enquiry</button>
+        <button type="submit" className="login-button" disabled={loader}>
+          {loader ? "Enquiring ..." : "Enquiry"}
+        </button>
+        {loader && <div className="loader"></div>} {/* Loader */}
         <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
           <button type="button" className="whatsapp-button">
             WhatsApp

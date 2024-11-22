@@ -14,7 +14,7 @@ const HouseDetails = () => {
 
   useEffect(() => {
     const fetchHouseDetails = async () => {
-      const baseURL =  "https://api.cribsandrides.com"; // Your backend URL
+      const baseURL = "https://api.cribsandrides.com"; // Your backend URL
 
       try {
         const response = await fetch(
@@ -148,6 +148,7 @@ function ContactForm({ house }) {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -156,6 +157,7 @@ function ContactForm({ house }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
 
     try {
       const token = localStorage.getItem("token");
@@ -178,7 +180,10 @@ function ContactForm({ house }) {
         setSuccessMessage("");
       }
     } catch (error) {
-      setErrorMessage("Error submitting the form, please try again later");
+      setErrorMessage(
+        "Error submitting the form, please try again later",
+        error
+      );
       setSuccessMessage("");
     }
   };
@@ -226,7 +231,10 @@ function ContactForm({ house }) {
         onChange={handleInputChange}
       ></textarea>
       <div className="button-group">
-        <button type="submit">Enquiry</button>
+        <button type="submit" className="login-button" disabled={loader}>
+          {loader ? "Enquiring ..." : "Enquiry"}
+        </button>
+        {loader && <div className="loader"></div>} {/* Loader */}
         <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
           <button type="button" className="whatsapp-button">
             WhatsApp
