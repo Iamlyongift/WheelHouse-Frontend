@@ -1,62 +1,92 @@
 .carousel {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 500px;
-    object-fit: contain;
-  }
-  
-  .slide {
-    border-radius: 0.5rem;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .slide-hidden {
-    display: none;
-  }
-  
-  .arrow {
-    position: absolute;
-    filter: drop-shadow(0px 0px 5px #555);
-    width: 2rem;
-    height: 2rem;
-    color: white;
-  }
-  
-  .arrow:hover {
-    cursor: pointer;
-  }
-  
-  .arrow-left {
-    left: 1rem;
-  }
-  
-  .arrow-right {
-    right: 1rem;
-  }
-  
-  .indicators {
-    display: flex;
-    position: absolute;
-    bottom: 1rem;
-  }
-  
-  .indicator {
-    background-color: white;
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 5px #555;
-    margin: 0 0.2rem;
-    cursor: pointer;
-  }
-  
-  .indicator-inactive {
-    background-color: grey;
-  }
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+.slide-active {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  z-index: 1;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+}
+
+.arrow-right {
+  right: 1rem;
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.indicator {
+  background-color: white;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  border: none;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator:hover {
+  background-color: #ff4081;
+}
+
+.indicator-inactive {
+  background-color: grey;
+}
+ 

@@ -17,16 +17,17 @@ export default Testimonials;
 const Hero = () => {
   return (
     <section className="hero">
-      <div className="hero-content">
-        <h1>
+      <div className="hero-overlay" />
+      <div className="hero-content animate-fade-in-up">
+        <h1 className="hero-heading">
           Read What <span className="highlight">Our Customers</span> Have to Say
           About Us
         </h1>
-        <p>
+        <p className="hero-subtext">
           For over 5 years and counting we have continued to focus on providing
           a great experience for our customers.
         </p>
-        <p>
+        <p className="hero-subtext">
           Scroll down to read what our customers have to say about us, in their
           own words.
         </p>
@@ -34,6 +35,8 @@ const Hero = () => {
     </section>
   );
 };
+
+
 
 const Testimonial = () => {
   const [reviews, setReviews] = useState([]); // State to store fetched reviews

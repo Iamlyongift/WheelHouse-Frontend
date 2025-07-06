@@ -52,73 +52,76 @@ const NavigationBar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <Link to="/" className="link-home" onClick={closeMenu}>
-        <div className="brand-name">
-          <img src={Logo} alt="" className="logo" />
+   <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      {/* Brand Section */}
+      <Link to="/" className="brand-link" onClick={closeMenu}>
+        <div className="brand-container">
+          <img src={Logo} alt="Brand Logo" className="brand-logo" />
         </div>
       </Link>
-      <div className="menu-icon" onClick={toggleMenu}>
-        {isMenuOpen ? (
-          <IoClose size={25} className="toggle" />
-        ) : (
-          <CiMenuFries size={25} className="toggle" />
-        )}
-      </div>
-      <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-        <Link id="hove" className="links" to="/about" onClick={closeMenu}>
-          About
-        </Link>
-        <Link id="hove" className="links" to="/contact" onClick={closeMenu}>
-          Contact
-        </Link>
-        <Link
-          id="hove"
-          className="links"
-          to="/testimonials"
-          onClick={closeMenu}
-        >
-          Testimonials
-        </Link>
-        <Link id="hove" className="links" to="/houses" onClick={closeMenu}>
-          Houses
-        </Link>
-        <Link id="hove" className="links" to="/cars" onClick={closeMenu}>
-          Cars
-        </Link>
 
-        {/* Conditionally render Dashboard and Wishlist links for authenticated users */}
-        {isLoggedIn && (
-          <>
-            <Link
-              id="hove"
-              className="links"
-              to="/my-account"
-              onClick={closeMenu}
-            >
-              Profile
-            </Link>
-            <Link
-              id="hove"
-              className="links"
-              to="/wishlist"
-              onClick={closeMenu}
-            >
-              Wishlist
-            </Link>
-          </>
-        )}
+      {/* Mobile Menu Toggle */}
+      <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
+        <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+          {isMenuOpen ? (
+            <IoClose size={24} className="menu-icon" />
+          ) : (
+            <CiMenuFries size={24} className="menu-icon" />
+          )}
+        </span>
+      </button>
 
-        {isLoggedIn ? (
-          <button className="login-button" onClick={handleLogout}>
-            Logout
-          </button>
-        ) : (
-          <Link className="links" to="/login" onClick={closeMenu}>
-            <button className="login-button">Login</button>
-          </Link>
-        )}
+      {/* Navigation Links */}
+      <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
+        <div className="nav-links-container">
+          {/* Main Navigation Links */}
+          <div className="nav-links">
+            <Link className="nav-link" to="/about" onClick={closeMenu}>
+              <span>About</span>
+            </Link>
+            <Link className="nav-link" to="/contact" onClick={closeMenu}>
+              <span>Contact</span>
+            </Link>
+            <Link className="nav-link" to="/testimonials" onClick={closeMenu}>
+              <span>Testimonials</span>
+            </Link>
+            <Link className="nav-link" to="/houses" onClick={closeMenu}>
+              <span>Houses</span>
+            </Link>
+            <Link className="nav-link" to="/cars" onClick={closeMenu}>
+              <span>Cars</span>
+            </Link>
+          </div>
+
+          {/* User-specific Links */}
+          {isLoggedIn && (
+            <div className="user-links">
+              <Link className="nav-link user-link" to="/my-account" onClick={closeMenu}>
+                <span>Profile</span>
+              </Link>
+              <Link className="nav-link user-link" to="/wishlist" onClick={closeMenu}>
+                <span>Wishlist</span>
+              </Link>
+            </div>
+          )}
+
+          {/* Authentication Button */}
+          <div className="auth-section">
+            {isLoggedIn ? (
+              <button className="auth-btn logout-btn" onClick={handleLogout}>
+                Logout
+              </button>
+            ) : (
+              <Link to="/login" onClick={closeMenu}>
+                <button className="auth-btn login-btn">Login</button>
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
+
+      {/* Mobile Menu Backdrop */}
+      {isMenuOpen && <div className="menu-backdrop" onClick={closeMenu}></div>}
     </nav>
   );
 };
