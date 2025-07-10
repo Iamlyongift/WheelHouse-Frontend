@@ -28,6 +28,7 @@ const LoginPage = () => {
     setLoading(true); // Set loading to true when the request starts
 
     const baseURL = "https://api.cribsandrides.com";
+    
     try {
       const response = await fetch(`${baseURL}/users/login`, {
         method: "POST",

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "../Css/Register.css";
 import { Link } from "react-router-dom";
+import "../Css/Register.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,55 +10,51 @@ const Register = () => {
     confirm_password: "",
     phone_number: "",
     country: "",
-    profilePhoto: null, // File handling for profile photo
+    profilePhoto: null,
   });
 
   const [countries, setCountries] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(""); // Error message state for email validation
+  const [errorMessage, setErrorMessage] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
   // Handle input changes for text fields
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   // Handle file input changes
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      profilePhoto: e.target.files[0], // Get the selected file
-    });
+    setFormData(prev => ({ ...prev, profilePhoto: e.target.files[0] }));
   };
+
+  // Toggle password visibility
+  const handleTogglePassword = () => setPasswordVisible(!passwordVisible);
+  const handleToggleConfirmPassword = () => setConfirmPasswordVisible(!confirmPasswordVisible);
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Reset error message before submission
     setErrorMessage("");
     setLoading(true);
 
-    // Check if passwords match
+    // Validate passwords match
     if (formData.password !== formData.confirm_password) {
       setErrorMessage("Passwords do not match!");
       setLoading(false);
       return;
     }
 
-    // Check if profile photo is uploaded
+    // Validate profile photo
     if (!formData.profilePhoto) {
       setErrorMessage("Please upload a profile photo.");
       setLoading(false);
       return;
     }
 
-    // Create FormData object to send the form data
+    // Create FormData object
     const data = new FormData();
     data.append("username", formData.username);
     data.append("email", formData.email);
@@ -66,51 +62,36 @@ const Register = () => {
     data.append("confirm_password", formData.confirm_password);
     data.append("phoneNumber", formData.phone_number);
     data.append("country", formData.country);
-    data.append("profilePhoto", formData.profilePhoto); // Append file
+    data.append("profilePhoto", formData.profilePhoto);
 
-    // Define base URL for the backend
-    const baseURL =  "https://api.cribsandrides.com";
+    // const baseURL = "http://localhost:2025";
+    const baseURL = "https://api.cribsandrides.com";
 
     try {
       const response = await fetch(`${baseURL}/users/register`, {
         method: "POST",
-        body: data, // Send FormData directly
+        body: data,
       });
 
       const responseData = await response.json();
 
       if (response.ok) {
-        // Registration successful
-        alert(
-          "Registration successful! check your mail for verification email"
-        );
+        alert("Registration successful! check your mail for verification email");
         console.log("Success:", responseData);
-        // You can redirect the user to another page here if necessary
       } else if (responseData.message === "Email already exists") {
-        // Handle case where email already exists
-        setErrorMessage(
-          responseData.message ||
-            "This email is already registered. Please try logging in."
-        );
+        setErrorMessage(responseData.message || "This email is already registered. Please try logging in.");
       } else {
-        // Registration failed due to other reasons
-        setErrorMessage(
-          responseData.message || "Something went wrong. Please try again."
-        );
+        setErrorMessage(responseData.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
       setErrorMessage("An error occurred during registration.");
     } finally {
-      setLoading(false); // Stop loading after the response
+      setLoading(false);
     }
   };
 
-  const handleTogglePassword = () => setPasswordVisible(!passwordVisible);
-  const handleToggleConfirmPassword = () =>
-    setConfirmPasswordVisible(!confirmPasswordVisible);
-
-  // Fetch the list of countries
+  // Fetch countries list
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -123,12 +104,12 @@ const Register = () => {
             name: country.name.common,
             code: country.cca2,
           }))
-          .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically by name
+          .sort((a, b) => a.name.localeCompare(b.name));
 
         setCountries(countryOptions);
       } catch (error) {
         console.error("Failed to fetch countries:", error);
-        setCountries([{ name: "United States", code: "US" }]); // Fallback country
+        setCountries([{ name: "United States", code: "US" }]);
       }
     };
 
@@ -151,6 +132,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-group">
             <input
               className="regi"
@@ -162,6 +144,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-group">
             <input
               className="regi"
@@ -176,6 +159,7 @@ const Register = () => {
               {passwordVisible ? "👁️" : "🙈"}
             </span>
           </div>
+
           <div className="input-group">
             <input
               className="regi"
@@ -190,6 +174,7 @@ const Register = () => {
               {confirmPasswordVisible ? "👁️" : "🙈"}
             </span>
           </div>
+
           <div className="input-group">
             <input
               className="regi"
@@ -202,7 +187,6 @@ const Register = () => {
             />
           </div>
 
-          {/* Dropdown for country selection */}
           <div className="input-group">
             <select
               className="regi"
@@ -220,18 +204,16 @@ const Register = () => {
             </select>
           </div>
 
-          {/* Profile photo file input */}
           <div className="profile-holder">
             <input
               type="file"
               name="profilePhoto"
               accept="image/*"
-              onChange={handleFileChange} // Handle file selection
+              onChange={handleFileChange}
               required
             />
           </div>
 
-          {/* Error message display */}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <div className="input-group checkbox-group">
@@ -240,6 +222,7 @@ const Register = () => {
               I agree to the <a href="#">Terms of Use</a>
             </label>
           </div>
+
           <button type="submit" className="register-btn" disabled={loading}>
             {loading ? "Registering..." : "REGISTER"}
           </button>

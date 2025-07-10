@@ -107,6 +107,8 @@ button:hover {
   font-size: 18px; /* Adjust icon size if needed */
 }
 
+
+
 @media (max-width: 768px) {
   .container-reg {
     display: flex;
