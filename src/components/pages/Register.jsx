@@ -64,7 +64,7 @@ const Register = () => {
     data.append("country", formData.country);
     data.append("profilePhoto", formData.profilePhoto);
 
-    // const baseURL = "http://localhost:2025";
+   
     const baseURL = "https://api.cribsandrides.com";
 
     try {

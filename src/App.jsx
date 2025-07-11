@@ -6,7 +6,7 @@ import Loader from "./components/Loader/Loader";
 import PrivateRoute from "./components/pages/PrivateRoute";
 import PublicRoute from "./components/pages/PublicRoute";
 
-// Lazy load your components
+// Lazy load components for better performance
 const About = lazy(() => import("./components/pages/About"));
 const Product = lazy(() => import("./components/pages/Product"));
 const Contact = lazy(() => import("./components/pages/Contact"));
@@ -22,61 +22,70 @@ const HouseDetails = lazy(() => import("./components/pages/HouseDetail"));
 const FAQPage = lazy(() => import("./components/pages/FAQPage"));
 const Testimonials = lazy(() => import("./components/pages/Testimonials"));
 
+/**
+ * Main App component that handles routing and layout structure
+ * Implements lazy loading for performance optimization
+ */
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app">
         <Navbar />
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
+        <main className="main-content">
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/houses" element={<Houses />} />
+              <Route path="/houses/:id" element={<HouseDetails />} />
+              <Route path="/cars" element={<Product />} />
+              <Route path="/cars/:id" element={<CarDetails />} />
 
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <LoginPage />
-                </PublicRoute>
-              }
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/testimonials" element={<Testimonials />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route
-              path="/my-account"
-              element={
-                <PrivateRoute>
-                  <ProfilePage />
-                </PrivateRoute>
-              }
-            />
+              {/* Authentication Routes - Only for unauthenticated users */}
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute>
+                    <Register />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="/wishlist"
-              element={
-                <PrivateRoute>
-                  <WishList />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/houses" element={<Houses />} />
-            <Route path="/houses/:id" element={<HouseDetails />} />
-            <Route path="/cars" element={<Product />} />
-            <Route path="/cars/:id" element={<CarDetails />} />
-          </Routes>
-        </Suspense>
+              {/* Protected Routes - Only for authenticated users */}
+              <Route
+                path="/my-account"
+                element={
+                  <PrivateRoute>
+                    <ProfilePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/wishlist"
+                element={
+                  <PrivateRoute>
+                    <WishList />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 }
